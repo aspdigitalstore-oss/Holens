@@ -17,7 +17,7 @@ export function Footer() {
               to="/contact"
               className="group mt-10 inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm hover:bg-white hover:text-ink transition-colors"
             >
-              Partner with us
+              Become distributor
               <ArrowUpRight className="h-4 w-4 hover-arrow" />
             </Link>
           </div>
@@ -33,7 +33,7 @@ export function Footer() {
               { label: "Distributors", to: "/contact" },
               { label: "Retailers", to: "/contact" },
               { label: "Pharmacies", to: "/contact" },
-              { label: "Request quote", to: "/contact" },
+              { label: "Request partnership pricing", to: "/contact" },
             ]} />
             <FooterCol title="Legal" links={[
               { label: "Privacy", to: "/" },

@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { BRANDS } from "@/lib/brands";
@@ -16,6 +16,40 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileCategory, setMobileCategory] = useState<string | null>(null);
+
+  const categories = useMemo(
+    () =>
+      Object.values(
+        BRANDS.reduce<Record<
+          string,
+          {
+            label: string;
+            description: string;
+            brands: Array<{ slug: string; name: string; short: string; accent: string }>;
+          }
+        >>(
+          (acc, brand) => {
+            if (!acc[brand.category]) {
+              acc[brand.category] = {
+                label: brand.category,
+                description: brand.short,
+                brands: [],
+              };
+            }
+            acc[brand.category].brands.push({
+              slug: brand.slug,
+              name: brand.name,
+              short: brand.short,
+              accent: brand.accent,
+            });
+            return acc;
+          },
+          {}
+        )
+      ),
+    []
+  );
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -66,7 +100,7 @@ export function Navbar() {
             to="/contact"
             className="group inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-ink/85"
           >
-            Request a quote
+            Request Bulk Quote
             <ArrowUpRight className="h-4 w-4 hover-arrow" />
           </Link>
         </div>
@@ -74,7 +108,12 @@ export function Navbar() {
         <button
           aria-label="Open menu"
           className="lg:hidden"
-          onClick={() => setMobileOpen((v) => !v)}
+          onClick={() => {
+            setMobileOpen((value) => {
+              if (value) setMobileCategory(null);
+              return !value;
+            });
+          }}
         >
           {mobileOpen ? <X /> : <Menu />}
         </button>
@@ -90,39 +129,47 @@ export function Navbar() {
             className="hidden border-t border-black/5 bg-white lg:block"
           >
             <div className="mx-auto grid max-w-[1400px] grid-cols-12 gap-8 px-6 py-10 lg:px-10">
-              <div className="col-span-3">
-                <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Our brands</p>
-                <h3 className="mt-3 font-display text-3xl text-balance">A family of brands trusted in 38 markets.</h3>
+              <div className="col-span-12 lg:col-span-3">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                  Healthcare categories
+                </p>
+                <h3 className="mt-3 font-display text-3xl text-balance">
+                  Premium products for pharmacies, retailers and distributors.
+                </h3>
+                <p className="mt-5 text-sm leading-6 text-muted-foreground">
+                  Explore our clinical categories and discover the brand partners designed for enterprise supply chains.
+                </p>
                 <Link
                   to="/brands"
                   className="group mt-6 inline-flex items-center gap-2 text-sm font-medium"
                 >
-                  See all brands
+                  View all categories
                   <ArrowUpRight className="h-4 w-4 hover-arrow" />
                 </Link>
               </div>
-              <div className="col-span-9 grid grid-cols-5 gap-4">
-                {BRANDS.map((b) => (
-                  <Link
-                    key={b.slug}
-                    to={`/brands/${b.slug}`}
-                    onClick={() => setMegaOpen(false)}
-                    className="group relative overflow-hidden rounded-lg border border-black/5 bg-bone p-4 transition-all hover:-translate-y-1 hover:shadow-xl"
-                  >
-                    <div className="aspect-[4/3] overflow-hidden rounded">
-                      <img
-                        src={b.image}
-                        alt={b.name}
-                        loading="lazy"
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
+
+              <div className="col-span-12 lg:col-span-9 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                {categories.map((category) => (
+                  <div key={category.label} className="rounded-[2rem] border border-black/5 bg-bone p-6">
+                    <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">{category.label}</p>
+                    <p className="mt-3 text-sm leading-6 text-ink/80">{category.description}</p>
+                    <div className="mt-6 space-y-3">
+                      {category.brands.map((brand) => (
+                        <Link
+                          key={brand.slug}
+                          to={`/brands/${brand.slug}`}
+                          onClick={() => setMegaOpen(false)}
+                          className="block rounded-2xl border border-black/5 bg-white p-4 transition hover:border-ink/20 hover:shadow-xl"
+                        >
+                          <div className="flex items-center justify-between gap-3">
+                            <span className="font-semibold">{brand.name}</span>
+                            <ArrowUpRight className="h-4 w-4 text-ink/70" />
+                          </div>
+                          <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{brand.short}</p>
+                        </Link>
+                      ))}
                     </div>
-                    <div className="mt-3 flex items-baseline justify-between">
-                      <span className="font-display text-xl">{b.name}</span>
-                      <ArrowUpRight className="h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100" />
-                    </div>
-                    <p className="mt-1 text-xs leading-snug text-muted-foreground line-clamp-2">{b.short}</p>
-                  </Link>
+                  </div>
                 ))}
               </div>
             </div>
@@ -149,17 +196,48 @@ export function Navbar() {
                   {item.label}
                 </Link>
               ))}
-              <div className="grid grid-cols-2 gap-2 pt-2">
-                {BRANDS.map((b) => (
-                  <Link
-                    key={b.slug}
-                    to={`/brands/${b.slug}`}
-                    onClick={() => setMobileOpen(false)}
-                    className="rounded-md border border-black/10 p-3 text-sm"
-                  >
-                    {b.name}
-                  </Link>
-                ))}
+              <div className="rounded-3xl border border-black/10 bg-bone p-4">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Browse categories</p>
+                <div className="mt-4 space-y-3">
+                  {categories.map((category) => (
+                    <div key={category.label} className="overflow-hidden rounded-2xl border border-black/10 bg-white">
+                      <button
+                        type="button"
+                        className="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-medium"
+                        onClick={() => setMobileCategory((current) => (current === category.label ? null : category.label))}
+                      >
+                        <span>{category.label}</span>
+                        <span className="text-xs text-muted-foreground">
+                          {mobileCategory === category.label ? "Hide" : "Show"}
+                        </span>
+                      </button>
+                      <AnimatePresence initial={false}>
+                        {mobileCategory === category.label && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="space-y-2 border-t border-black/10 px-4 py-3"
+                          >
+                            {category.brands.map((brand) => (
+                              <Link
+                                key={brand.slug}
+                                to={`/brands/${brand.slug}`}
+                                onClick={() => {
+                                  setMobileOpen(false);
+                                  setMobileCategory(null);
+                                }}
+                                className="block rounded-xl px-3 py-2 text-sm text-ink/90 transition hover:bg-bone"
+                              >
+                                {brand.name}
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>

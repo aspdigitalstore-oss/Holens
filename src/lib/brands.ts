@@ -8,6 +8,8 @@ export type Product = {
   name: string;
   tagline: string;
   description: string;
+  price?: string;
+  gtin?: string;
   details: string[];
 };
 
@@ -24,6 +26,11 @@ export type Brand = {
   heroVideo: string;
   story: string;
   categories: string[];
+  minOrder: string;
+  packaging: string;
+  supplyAvailability: string;
+  distributionSupport: string;
+  shippingAvailability: string;
   products: Product[];
   keywords: string[];
 };
@@ -45,6 +52,11 @@ export const BRANDS: Brand[] = [
     story:
       "Born inside a Geneva pharmacy in 2012, NovaVit pioneered single-dose blister vitamins for travellers. A decade later, the brand serves 38 markets with a portfolio engineered for performance, immunity, and longevity.",
     categories: ["Daily Wellness", "Immunity", "Performance", "Longevity"],
+    minOrder: "500 Units",
+    packaging: "24 Packs / Carton",
+    supplyAvailability: "Global enterprise stock with flexible lead times",
+    distributionSupport: "Dedicated account management",
+    shippingAvailability: "Worldwide logistics & regulatory support",
     products: [
       {
         name: "NovaVit Multi 50+",
@@ -95,6 +107,11 @@ export const BRANDS: Brand[] = [
     story:
       "Founded by a São Paulo dermatologist tired of compromise, Pureskin formulates without fragrance, dyes or unnecessary actives. Every product is tested on reactive panels before launch.",
     categories: ["Cleansers", "Serums", "Moisturisers", "Sun Protection"],
+    minOrder: "400 Units",
+    packaging: "12 Kits / Carton",
+    supplyAvailability: "Enterprise-scale fulfilment across regions",
+    distributionSupport: "Market launch support for distributors",
+    shippingAvailability: "International cold-chain shipping",
     products: [
       {
         name: "Pureskin Barrier Serum",
@@ -145,6 +162,11 @@ export const BRANDS: Brand[] = [
     story:
       "Dentapro began as a clinic-only line in Seoul in 2008. Today it is the third most-recommended oral care brand by general dentists in five OECD markets.",
     categories: ["Toothpaste", "Mouthwash", "Interdental", "Sensitivity"],
+    minOrder: "1,000 Units",
+    packaging: "60 Tubes / Carton",
+    supplyAvailability: "Regional hubs in EU and APAC",
+    distributionSupport: "Pharmacy and distributor onboarding",
+    shippingAvailability: "Cross-border freight solutions",
     products: [
       {
         name: "Dentapro Enamel Pro",
@@ -195,6 +217,11 @@ export const BRANDS: Brand[] = [
     story:
       "Calmrest was developed with sleep scientists at the Copenhagen Centre for Circadian Health. Every product is built around chronobiology, not just sedation.",
     categories: ["Sleep Support", "Stress & Mood", "Relaxation", "Recovery"],
+    minOrder: "600 Units",
+    packaging: "30 Sachets / Carton",
+    supplyAvailability: "24-month production capacity",
+    distributionSupport: "Retail channel implementation support",
+    shippingAvailability: "Global freight and customs handling",
     products: [
       {
         name: "Calmrest Night Complex",
@@ -245,6 +272,11 @@ export const BRANDS: Brand[] = [
     story:
       "KidsGlow was founded by two paediatricians who couldn't find a children's vitamin they'd give their own kids. Today, KidsGlow is the leading clean-label children's nutrition brand across Southeast Asia.",
     categories: ["Multivitamins", "Immunity", "Brain & Focus", "Bone Growth"],
+    minOrder: "500 Units",
+    packaging: "20 Bottles / Carton",
+    supplyAvailability: "Pediatric supply chain inventory",
+    distributionSupport: "Distributor onboarding and marketing support",
+    shippingAvailability: "Worldwide shipping with customs support",
     products: [
       {
         name: "KidsGlow Daily Gummies",

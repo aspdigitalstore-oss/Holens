@@ -196,7 +196,7 @@ export default function Home() {
               to="/contact"
               className="group mt-10 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-white hover:bg-ink/85"
             >
-              Request a quotation
+              Request Bulk Quote
               <ArrowUpRight className="h-4 w-4 hover-arrow" />
             </Link>
           </Reveal>

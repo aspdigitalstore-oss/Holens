@@ -10,11 +10,11 @@ export default function Contact() {
 
   return (
     <>
-      <Seo title="Request a Quote — Vitala Global" description="Request a quotation, product catalogue or distribution partnership with Vitala Global." />
+      <Seo title="Request partnership pricing — Vitala Global" description="Request partnership pricing, bulk quote or distribution inquiry with Vitala Global." />
       <section className="bg-ink pt-40 pb-20 text-white lg:pt-48">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <Reveal>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">Contact · Request a quote</p>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">Contact · Partnership inquiry</p>
             <h1 className="mt-4 max-w-5xl font-display text-6xl leading-[0.95] md:text-8xl">Let's talk.</h1>
             <p className="mt-6 max-w-xl text-white/70 md:text-lg">
               Tell us about your business and which of our brands you're interested in. Our partnership team replies within 48 hours.
@@ -86,11 +86,11 @@ export default function Contact() {
                   </select>
                 </Field>
                 <Field label="Tell us more" className="md:col-span-2">
-                  <textarea className="input min-h-[140px]" placeholder="Share your market, expected volumes and any product specifics." />
+                  <textarea className="input min-h-[140px]" placeholder="Share your market, expected volumes and any distribution requirements." />
                 </Field>
                 <div className="md:col-span-2">
                   <button type="submit" className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-white hover:bg-ink/85">
-                    Send inquiry
+                    Submit inquiry
                     <ArrowUpRight className="h-4 w-4 hover-arrow" />
                   </button>
                 </div>

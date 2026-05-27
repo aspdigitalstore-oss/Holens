@@ -78,6 +78,33 @@ export default function BrandPage() {
         </div>
       </section>
 
+      <section className="bg-bone py-24 lg:py-28">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+          <Reveal>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Commercial overview</p>
+            <h2 className="mt-3 font-display text-5xl leading-[1.05] md:text-6xl">
+              Enterprise terms for supply, distribution and fulfilment.
+            </h2>
+          </Reveal>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            {[
+              { label: "Minimum order", value: brand.minOrder },
+              { label: "Packaging", value: brand.packaging },
+              { label: "Supply availability", value: brand.supplyAvailability },
+              { label: "Distribution support", value: brand.distributionSupport },
+              { label: "Shipping availability", value: brand.shippingAvailability },
+            ].map((item) => (
+              <Reveal key={item.label} delay={0.05}>
+                <div className="rounded-[2rem] border border-black/10 bg-white p-8">
+                  <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{item.label}</p>
+                  <p className="mt-4 text-2xl font-semibold text-ink">{item.value}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="border-y border-black/5 bg-bone py-20">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <Reveal>
@@ -132,7 +159,7 @@ export default function BrandPage() {
                       to="/contact"
                       className="group mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-white hover:bg-ink/85"
                     >
-                      Inquire about this product
+                      Request product dossier
                       <ArrowUpRight className="h-4 w-4 hover-arrow" />
                     </Link>
                   </div>
@@ -165,14 +192,14 @@ export default function BrandPage() {
           </Reveal>
           <Reveal delay={0.1} className="flex flex-col justify-end">
             <p className="text-ink/80 md:text-lg">
-              For retailers, pharmacies, distributors and private-label partners — request a quotation, full product catalogue or sample pack from our partnership team.
+              For retailers, pharmacies, distributors and private-label partners — request partnership pricing, a full product catalogue or a sample pack from our partnership team.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/contact" className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-white hover:bg-ink/85">
-                Request a quote <ArrowUpRight className="h-4 w-4 hover-arrow" />
+                Request partnership pricing <ArrowUpRight className="h-4 w-4 hover-arrow" />
               </Link>
               <Link to="/contact" className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-6 py-3 text-sm font-medium text-ink hover:bg-ink hover:text-white">
-                General inquiry
+                Become distributor
               </Link>
             </div>
           </Reveal>

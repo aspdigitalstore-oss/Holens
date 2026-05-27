@@ -16,10 +16,10 @@ export default function Brands() {
           <Reveal>
             <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Our brands</p>
             <h1 className="mt-4 max-w-5xl font-display text-6xl leading-[0.95] tracking-tight md:text-8xl">
-              Five brands built for everyday health.
+              Five brands built for enterprise supply.
             </h1>
             <p className="mt-8 max-w-xl text-pretty text-muted-foreground md:text-lg">
-              Each brand has its own audience, formulation philosophy and design language. All share one quality system and one purpose.
+              Each brand is formulated, manufactured and supported for distributors, pharmacies and strategic retail partners.
             </p>
           </Reveal>
         </div>
@@ -42,8 +42,12 @@ export default function Brands() {
                   <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{b.category}</p>
                   <p className="mt-4 font-display text-6xl tracking-tight md:text-7xl">{b.name}</p>
                   <p className="mt-4 max-w-xl text-lg text-muted-foreground">{b.description}</p>
+                  <div className="mt-6 flex flex-wrap gap-3 text-xs text-ink/70">
+                    <span className="rounded-full bg-bone px-3 py-1">{b.minOrder}</span>
+                    <span className="rounded-full bg-bone px-3 py-1">{b.packaging}</span>
+                  </div>
                   <span className="mt-8 inline-flex w-fit items-center gap-2 text-sm font-medium">
-                    Visit brand
+                    Explore solutions
                     <ArrowUpRight className="h-4 w-4 hover-arrow" />
                   </span>
                 </div>
