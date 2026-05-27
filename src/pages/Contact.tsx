@@ -1,13 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
+import { Link } from "react-router-dom";
 import { Reveal } from "@/components/site/Reveal";
 import { Seo } from "@/lib/seo";
 import { BRANDS } from "@/lib/brands";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 
-export const Route = createFileRoute("/contact")({ component: Contact });
-
-function Contact() {
+export default function Contact() {
   const [sent, setSent] = useState(false);
 
   return (
@@ -17,9 +15,7 @@ function Contact() {
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <Reveal>
             <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">Contact · Request a quote</p>
-            <h1 className="mt-4 max-w-5xl font-display text-6xl leading-[0.95] md:text-8xl">
-              Let's talk.
-            </h1>
+            <h1 className="mt-4 max-w-5xl font-display text-6xl leading-[0.95] md:text-8xl">Let's talk.</h1>
             <p className="mt-6 max-w-xl text-white/70 md:text-lg">
               Tell us about your business and which of our brands you're interested in. Our partnership team replies within 48 hours.
             </p>
@@ -33,7 +29,7 @@ function Contact() {
             <Reveal>
               <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Headquarters</p>
               <p className="mt-3 font-display text-2xl">Vitala Global SA</p>
-              <p className="text-muted-foreground">12 Rue du Rhône<br/>1204 Geneva, Switzerland</p>
+              <p className="text-muted-foreground">12 Rue du Rhône<br />1204 Geneva, Switzerland</p>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Partnerships</p>
@@ -54,17 +50,30 @@ function Contact() {
               </div>
             ) : (
               <form
-                onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setSent(true);
+                }}
                 className="grid gap-6 rounded-md border border-black/10 p-8 md:grid-cols-2"
               >
-                <Field label="Full name" required><input required className="input" placeholder="Jane Mwangi" /></Field>
-                <Field label="Company" required><input required className="input" placeholder="Acme Pharmacies" /></Field>
-                <Field label="Email" required><input type="email" required className="input" placeholder="jane@company.com" /></Field>
-                <Field label="Country" required><input required className="input" placeholder="Kenya" /></Field>
+                <Field label="Full name" required>
+                  <input required className="input" placeholder="Jane Mwangi" />
+                </Field>
+                <Field label="Company" required>
+                  <input required className="input" placeholder="Acme Pharmacies" />
+                </Field>
+                <Field label="Email" required>
+                  <input type="email" required className="input" placeholder="jane@company.com" />
+                </Field>
+                <Field label="Country" required>
+                  <input required className="input" placeholder="Kenya" />
+                </Field>
                 <Field label="Brand of interest" className="md:col-span-2">
                   <select className="input">
                     <option>All brands</option>
-                    {BRANDS.map(b => <option key={b.slug}>{b.name}</option>)}
+                    {BRANDS.map((b) => (
+                      <option key={b.slug}>{b.name}</option>
+                    ))}
                   </select>
                 </Field>
                 <Field label="Type of inquiry" className="md:col-span-2">
@@ -108,7 +117,7 @@ function Contact() {
   );
 }
 
-function Field({ label, required, children, className = "" }: { label: string; required?: boolean; children: React.ReactNode; className?: string }) {
+function Field({ label, required, children, className = "" }: { label: string; required?: boolean; children: ReactNode; className?: string }) {
   return (
     <label className={`block ${className}`}>
       <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{label}{required && " *"}</span>

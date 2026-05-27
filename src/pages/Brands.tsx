@@ -1,12 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { BRANDS } from "@/lib/brands";
 import { Reveal } from "@/components/site/Reveal";
 import { Seo } from "@/lib/seo";
 
-export const Route = createFileRoute("/brands/")({ component: BrandsIndex });
-
-function BrandsIndex() {
+export default function Brands() {
   return (
     <>
       <Seo
@@ -32,8 +30,7 @@ function BrandsIndex() {
           {BRANDS.map((b, i) => (
             <Reveal key={b.slug} delay={(i % 2) * 0.08}>
               <Link
-                to="/brands/$slug"
-                params={{ slug: b.slug }}
+                to={`/brands/${b.slug}`}
                 className={`group grid items-stretch gap-8 border-b border-black/10 py-10 transition-colors hover:bg-bone lg:grid-cols-12 lg:gap-12 lg:py-16 ${i % 2 ? "lg:[direction:rtl]" : ""}`}
               >
                 <div className="lg:col-span-5 lg:[direction:ltr]">

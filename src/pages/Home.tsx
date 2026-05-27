@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import { ArrowUpRight, Globe2, Leaf, FlaskConical, ShieldCheck } from "lucide-react";
@@ -9,8 +9,6 @@ import { Seo } from "@/lib/seo";
 import wellbeing from "@/assets/people-wellbeing.jpg";
 import lab from "@/assets/lab-research.jpg";
 
-export const Route = createFileRoute("/")({ component: Home });
-
 const STATS = [
   { k: "38", v: "markets worldwide" },
   { k: "5", v: "category-leading brands" },
@@ -18,7 +16,7 @@ const STATS = [
   { k: "92%", v: "renewable energy" },
 ];
 
-function Home() {
+export default function Home() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
@@ -41,11 +39,15 @@ function Home() {
       <VideoHero
         eyebrow="Vitala Global · Consumer Healthcare"
         videoSrc="https://videos.pexels.com/video-files/4124482/4124482-uhd_2560_1440_25fps.mp4"
-        title={<>Better everyday<br />health, with <em className="italic text-lime not-italic font-display">humanity.</em></>}
+        title={
+          <>
+            Better everyday
+            <br />health, with <em className="italic text-lime not-italic font-display">humanity.</em>
+          </>
+        }
         subtitle="We are a family of five trusted consumer healthcare brands building products people use every day — backed by clinical rigour, designed for real lives."
       />
 
-      {/* Stats marquee */}
       <section className="border-y border-black/5 bg-bone">
         <div className="mx-auto grid max-w-[1400px] grid-cols-2 divide-x divide-black/10 px-6 lg:grid-cols-4 lg:px-10">
           {STATS.map((s, i) => (
@@ -57,7 +59,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Editorial intro */}
       <section className="bg-white py-28 lg:py-40">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <div className="grid gap-12 lg:grid-cols-12">
@@ -85,7 +86,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Brands showcase */}
       <section className="bg-ink py-28 text-white lg:py-40">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <div className="flex items-end justify-between gap-8">
@@ -106,8 +106,7 @@ function Home() {
             {BRANDS.map((b, i) => (
               <Reveal key={b.slug} delay={i * 0.06}>
                 <Link
-                  to="/brands/$slug"
-                  params={{ slug: b.slug }}
+                  to={`/brands/${b.slug}`}
                   className="group block overflow-hidden rounded-md bg-white/[0.03] ring-1 ring-white/10 transition-all hover:ring-white/30"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
@@ -137,7 +136,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Parallax image / quote */}
       <section ref={ref} className="relative h-[80vh] overflow-hidden bg-bone">
         <motion.div style={{ y }} className="absolute inset-0 -top-[10%] -bottom-[10%]">
           <img src={wellbeing} alt="People we serve" className="h-full w-full object-cover" loading="lazy" />
@@ -154,7 +152,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Innovation split */}
       <section className="bg-white py-28 lg:py-40">
         <div className="mx-auto grid max-w-[1400px] gap-16 px-6 lg:grid-cols-2 lg:px-10">
           <Reveal>
@@ -166,7 +163,7 @@ function Home() {
             <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Innovation</p>
             <h2 className="mt-3 font-display text-5xl leading-[1] md:text-6xl">Research that respects the consumer.</h2>
             <p className="mt-6 max-w-lg text-pretty text-base text-muted-foreground md:text-lg">
-              Our R&amp;D centres in Geneva and Singapore run more than 400 clinical and consumer studies a year. Every formula is reviewed by an independent panel of clinicians before launch.
+              Our R&D centres in Geneva and Singapore run more than 400 clinical and consumer studies a year. Every formula is reviewed by an independent panel of clinicians before launch.
             </p>
             <div className="mt-10 grid grid-cols-2 gap-6">
               {[
@@ -185,7 +182,6 @@ function Home() {
         </div>
       </section>
 
-      {/* CTA band */}
       <section className="bg-lime">
         <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-10 lg:py-32">
           <Reveal>

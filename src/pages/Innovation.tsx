@@ -1,14 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { Seo } from "@/lib/seo";
 import lab from "@/assets/lab-research.jpg";
 
-export const Route = createFileRoute("/innovation")({ component: Innovation });
-
-function Innovation() {
+export default function Innovation() {
   return (
     <>
-      <Seo title="Innovation & R&D — Vitala Global" description="Inside the Vitala Global R&D engine — 400+ studies a year, four research centres and a network of clinical partners." />
+      <Seo
+        title="Innovation & R&D — Vitala Global"
+        description="Inside the Vitala Global R&D engine — 400+ studies a year, four research centres and a network of clinical partners."
+      />
       <section className="bg-bone pt-40 pb-20 lg:pt-48">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <Reveal>
@@ -26,7 +26,7 @@ function Innovation() {
           </Reveal>
           <Reveal delay={0.1} className="flex flex-col justify-center">
             <p className="font-display text-4xl leading-[1.1] md:text-5xl">
-              Four R&amp;D centres. 400+ studies a year. One quality system.
+              Four R&D centres. 400+ studies a year. One quality system.
             </p>
             <p className="mt-6 text-muted-foreground md:text-lg">
               From bioavailability work in Geneva to consumer panels in Singapore, every Vitala product is shaped by independent science before it ever reaches a shelf.

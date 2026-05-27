@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { BRANDS } from "@/lib/brands";
 import { ArrowUpRight } from "lucide-react";
 
@@ -60,9 +60,9 @@ function FooterCol({ title, links }: { title: string; links: { label: string; to
       <ul className="mt-4 space-y-2">
         {links.map((l) => (
           <li key={l.label}>
-            <a href={l.to} className="text-sm text-white/80 transition-colors hover:text-lime">
+            <Link to={l.to} className="text-sm text-white/80 transition-colors hover:text-lime">
               {l.label}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

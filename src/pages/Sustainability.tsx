@@ -1,8 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { Seo } from "@/lib/seo";
-
-export const Route = createFileRoute("/sustainability")({ component: Sustainability });
 
 const PILLARS = [
   { k: "92%", v: "Renewable electricity across operations by 2025" },
@@ -11,10 +8,13 @@ const PILLARS = [
   { k: "0", v: "PVC, parabens and microbeads across all formulations" },
 ];
 
-function Sustainability() {
+export default function Sustainability() {
   return (
     <>
-      <Seo title="Sustainability — Vitala Global" description="Vitala Global's sustainability commitments: renewable energy, recyclable packaging, emissions reduction and clean formulation standards." />
+      <Seo
+        title="Sustainability — Vitala Global"
+        description="Vitala Global's sustainability commitments: renewable energy, recyclable packaging, emissions reduction and clean formulation standards."
+      />
       <section className="bg-bone pt-40 pb-20 lg:pt-48">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <Reveal>

@@ -1,15 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { Seo } from "@/lib/seo";
 import wellbeing from "@/assets/people-wellbeing.jpg";
 import lab from "@/assets/lab-research.jpg";
 
-export const Route = createFileRoute("/about")({ component: About });
-
-function About() {
+export default function About() {
   return (
     <>
       <Seo title="About — Vitala Global" description="Vitala Global is a Geneva-headquartered consumer healthcare company building five trusted brands across 38 markets." />
+
       <section className="bg-bone pt-40 pb-20 lg:pt-48">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <Reveal>
@@ -31,7 +29,7 @@ function About() {
               We were founded with one question: why is everyday healthcare so often poorly made?
             </p>
             <p className="mt-6 text-muted-foreground md:text-lg">
-              From a single Geneva pharmacy in 2012, Vitala has grown into a quietly global group — five brands, four R&amp;D centres, one shared quality system. We don't chase trends. We make the products families return to.
+              From a single Geneva pharmacy in 2012, Vitala has grown into a quietly global group — five brands, four R&D centres, one shared quality system. We don't chase trends. We make the products families return to.
             </p>
           </Reveal>
         </div>

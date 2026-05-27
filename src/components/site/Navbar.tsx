@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
@@ -47,13 +47,16 @@ export function Navbar() {
               className="relative"
               onMouseEnter={() => setMegaOpen(item.mega ?? false)}
             >
-              <Link
+              <NavLink
                 to={item.to}
-                className="rounded-full px-4 py-2 text-sm font-medium text-ink/80 transition-colors hover:text-ink"
-                activeProps={{ className: "text-ink" }}
+                className={({ isActive }) =>
+                  `rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                    isActive ? "text-ink" : "text-ink/80 hover:text-ink"
+                  }`
+                }
               >
                 {item.label}
-              </Link>
+              </NavLink>
             </div>
           ))}
         </nav>
@@ -102,8 +105,7 @@ export function Navbar() {
                 {BRANDS.map((b) => (
                   <Link
                     key={b.slug}
-                    to="/brands/$slug"
-                    params={{ slug: b.slug }}
+                    to={`/brands/${b.slug}`}
                     onClick={() => setMegaOpen(false)}
                     className="group relative overflow-hidden rounded-lg border border-black/5 bg-bone p-4 transition-all hover:-translate-y-1 hover:shadow-xl"
                   >
@@ -151,8 +153,7 @@ export function Navbar() {
                 {BRANDS.map((b) => (
                   <Link
                     key={b.slug}
-                    to="/brands/$slug"
-                    params={{ slug: b.slug }}
+                    to={`/brands/${b.slug}`}
                     onClick={() => setMobileOpen(false)}
                     className="rounded-md border border-black/10 p-3 text-sm"
                   >
