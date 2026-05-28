@@ -155,13 +155,18 @@ export default function BrandPage() {
                         </li>
                       ))}
                     </ul>
-                    <Link
-                      to="/contact"
-                      className="group mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-white hover:bg-ink/85"
-                    >
-                      Request product dossier
-                      <ArrowUpRight className="h-4 w-4 hover-arrow" />
-                    </Link>
+                    <div className="mt-8 flex items-center gap-3">
+                      <button
+                        className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-white hover:bg-ink/85"
+                        onClick={() => window.location.assign("/inquiry")}
+                      >
+                        Request Bulk Quote
+                        <ArrowUpRight className="h-4 w-4 hover-arrow" />
+                      </button>
+                      <a href="/contact" className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-2.5 text-sm font-medium text-ink hover:bg-ink hover:text-white">
+                        Become distributor
+                      </a>
+                    </div>
                   </div>
                 </div>
               </Reveal>

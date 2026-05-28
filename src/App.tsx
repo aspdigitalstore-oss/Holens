@@ -8,12 +8,15 @@ import Innovation from "@/pages/Innovation";
 import Sustainability from "@/pages/Sustainability";
 import Brands from "@/pages/Brands";
 import BrandPage from "@/pages/BrandPage";
+import Inquiry from "@/pages/Inquiry";
 import NotFound from "@/pages/NotFound";
+import { InquiryProvider } from "@/lib/inquiry";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-background text-ink">
+        <InquiryProvider>
         <Navbar />
         <main className="min-h-screen">
           <Routes>
@@ -24,10 +27,12 @@ function App() {
             <Route path="/sustainability" element={<Sustainability />} />
             <Route path="/brands" element={<Brands />} />
             <Route path="/brands/:slug" element={<BrandPage />} />
+            <Route path="/inquiry" element={<Inquiry />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
+        </InquiryProvider>
       </div>
     </BrowserRouter>
   );

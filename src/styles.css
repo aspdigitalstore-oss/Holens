@@ -93,3 +93,16 @@
     pointer-events: none; mix-blend-mode: overlay;
   }
 }
+
+/* Form input style used across pages */
+.input {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  padding: 10px 0;
+  font-size: 15px;
+  outline: none;
+  transition: border-color .18s ease;
+}
+.input:focus { border-color: var(--ink); }
