@@ -30,14 +30,14 @@ export function Navbar() {
           }
         >>(
           (acc, brand) => {
-            if (!acc[brand.category]) {
-              acc[brand.category] = {
-                label: brand.category,
+            if (!acc[brand.categoryGroup]) {
+              acc[brand.categoryGroup] = {
+                label: brand.categoryGroup,
                 description: brand.short,
                 brands: [],
               };
             }
-            acc[brand.category].brands.push({
+            acc[brand.categoryGroup].brands.push({
               slug: brand.slug,
               name: brand.name,
               short: brand.short,
@@ -69,9 +69,9 @@ export function Navbar() {
     >
       <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6 lg:px-10">
         <Link to="/" className="flex items-center gap-2 group">
-          <span className="grid h-7 w-7 place-items-center rounded-sm bg-ink text-white font-display text-lg leading-none">v</span>
-          <span className="font-display text-2xl tracking-tight">vitala</span>
-          <span className="ml-1 hidden text-[10px] uppercase tracking-[0.2em] text-muted-foreground md:inline">Global</span>
+          <span className="grid h-7 w-7 place-items-center rounded-sm bg-ink text-white font-display text-lg leading-none">H</span>
+          <span className="font-display text-2xl tracking-tight">Haleon</span>
+          <span className="ml-1 hidden text-[10px] uppercase tracking-[0.2em] text-muted-foreground md:inline">B2B</span>
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -97,10 +97,10 @@ export function Navbar() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <Link
-            to="/contact"
+            to="/inquiry"
             className="group inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-ink/85"
           >
-            Request Bulk Quote
+            B2B Inquiry
             <ArrowUpRight className="h-4 w-4 hover-arrow" />
           </Link>
         </div>
