@@ -1,7 +1,7 @@
-import pureskinImage from "@/assets/brand-pureskin.jpg";
+import cureskinImage from "@/assets/brand-cureskin.jpg";
 import dentaproImage from "@/assets/brand-dentapro.jpg";
 import novavitImage from "@/assets/brand-novavit.jpg";
-import kidsglowImage from "@/assets/brand-kidsglow.jpg";
+import kidgloImage from "@/assets/brand-kidglo.jpg";
 import calmrestImage from "@/assets/brand-calmrest.jpg";
 
 export type Product = {
@@ -38,8 +38,8 @@ export type Brand = {
 
 export const BRANDS: Brand[] = [
   {
-    slug: "pureskin",
-    name: "PureSkin",
+    slug: "cureskin",
+    name: "CureSkin",
     monogram: "Ps",
     category: "Dermaceutical Skincare",
     categoryGroup: "Dermaceutical Skincare",
@@ -47,19 +47,19 @@ export const BRANDS: Brand[] = [
     short:
       "Modern skincare products designed for beauty retailers, distributors and professional channels.",
     description:
-      "PureSkin combines thoughtful formulations, consumer-friendly textures and dependable wholesale supply for skincare buyers serving the USA and international markets.",
+      "CureSkin combines thoughtful formulations, consumer-friendly textures and dependable wholesale supply for skincare buyers serving the USA and international markets.",
     accent: "#D8A77B",
     story:
-      "PureSkin was created around a simple idea: effective skincare should be easy to understand, pleasant to use and ready for the demands of modern beauty retail.",
+      "CureSkin was created around a simple idea: effective skincare should be easy to understand, pleasant to use and ready for the demands of modern beauty retail.",
     subcategories: ["Facial Serums", "Hydration", "Daily Skincare"],
     supplyAvailability: "Planned wholesale production with batch documentation",
     distributionSupport: "Sales materials, product training and market support",
     shippingAvailability: "International B2B shipping subject to destination requirements",
-    image: pureskinImage,
-    imageAlt: "PureSkin facial serum product bottle for wholesale skincare buyers",
+    image: cureskinImage,
+    imageAlt: "CureSkin facial serum product bottle for wholesale skincare buyers",
     products: [
       {
-        id: "pureskin-hydrating-serum",
+        id: "cureskin-hydrating-serum",
         name: "Hydrating Facial Serum",
         tagline: "Lightweight daily hydration",
         description:
@@ -70,8 +70,8 @@ export const BRANDS: Brand[] = [
           "Retail-ready presentation",
           "Wholesale case packing available on quotation",
         ],
-        image: pureskinImage,
-        imageAlt: "PureSkin Hydrating Facial Serum glass dropper bottle",
+        image: cureskinImage,
+        imageAlt: "CureSkin Hydrating Facial Serum glass dropper bottle",
       },
     ],
     keywords: [
@@ -209,8 +209,8 @@ export const BRANDS: Brand[] = [
     keywords: ["bulk wellness products", "B2B health products", "wholesale supplements"],
   },
   {
-    slug: "kidsglow",
-    name: "KidsGlow",
+    slug: "kidglo",
+    name: "KidGlo",
     monogram: "Kg",
     category: "Children Nutrition",
     categoryGroup: "Children Nutrition",
@@ -218,19 +218,19 @@ export const BRANDS: Brand[] = [
     short:
       "Children's nutrition products created for family wellness and pharmacy retail channels.",
     description:
-      "KidsGlow supports family wellness assortments with approachable children's nutrition formats developed for B2B retail and distribution.",
+      "KidGlo supports family wellness assortments with approachable children's nutrition formats developed for B2B retail and distribution.",
     accent: "#F07B5A",
     story:
-      "KidsGlow was built to make family wellness products feel clear, friendly and easy for parents to bring into everyday routines.",
+      "KidGlo was built to make family wellness products feel clear, friendly and easy for parents to bring into everyday routines.",
     subcategories: ["Kids Vitamins", "Gummies", "Family Wellness"],
     supplyAvailability: "Planned wholesale production with batch documentation",
     distributionSupport: "Product specifications and family retail support",
     shippingAvailability: "International B2B shipping subject to destination requirements",
-    image: kidsglowImage,
-    imageAlt: "KidsGlow children's vitamin gummies bottle for wholesale family wellness buyers",
+    image: kidgloImage,
+    imageAlt: "KidGlo children's vitamin gummies bottle for wholesale family wellness buyers",
     products: [
       {
-        id: "kidsglow-vitamin-gummies",
+        id: "kidglo-vitamin-gummies",
         name: "Kids Vitamin Gummies",
         tagline: "Family-friendly daily nutrition",
         description:
@@ -241,8 +241,8 @@ export const BRANDS: Brand[] = [
           "Retail-ready bottle format",
           "Wholesale case packing available on quotation",
         ],
-        image: kidsglowImage,
-        imageAlt: "KidsGlow Kids Vitamin Gummies bottle with fruit pieces",
+        image: kidgloImage,
+        imageAlt: "KidGlo Kids Vitamin Gummies bottle with fruit pieces",
       },
     ],
     keywords: ["wholesale kids vitamins", "family wellness products", "B2B nutrition products"],
