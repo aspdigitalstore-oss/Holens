@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 import { getAccountFromStorage, type Account, BUSINESS_TYPES } from "@/lib/account";
@@ -31,9 +31,15 @@ export default function Checkout() {
   const [account, setAccount] = useState<Account | null>(() => getAccountFromStorage());
   const [details, setDetails] = useState<InquiryDetails>(() => detailsFromAccount(account));
   const [loading, setLoading] = useState(false);
-  const [accountModalOpen, setAccountModalOpen] = useState(false);
+  const [accountModalOpen, setAccountModalOpen] = useState(!account);
   const [error, setError] = useState<string | null>(null);
   const [reference, setReference] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!account) {
+      setAccountModalOpen(true);
+    }
+  }, []);
 
   if ((!items.length || !hasMinimum) && !reference) return <Navigate to="/cart" replace />;
 
@@ -184,7 +190,8 @@ export default function Checkout() {
 
                 {!account && (
                   <div className="mt-6">
-                    <button type="button" onClick={() => setAccountModalOpen(true)} className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2 text-sm font-medium text-white">
+                    <p className="text-sm text-muted-foreground">The account dialog should be open above. If not, click the button below.</p>
+                    <button type="button" onClick={() => setAccountModalOpen(true)} className="mt-3 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2 text-sm font-medium text-white">
                       Open account dialog
                     </button>
                   </div>

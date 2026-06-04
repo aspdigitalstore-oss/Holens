@@ -1,7 +1,7 @@
 import { useState, type FormEvent, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { LogIn, UserPlus } from "lucide-react";
-import { BUSINESS_TYPES, createAccount, loginAccount, type Account } from "@/lib/account";
+import { BUSINESS_TYPES, type Account } from "@/lib/account";
 
 export default function AccountModal({
   open,
@@ -18,14 +18,11 @@ export default function AccountModal({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // create fields
-  const [companyName, setCompanyName] = useState("");
-  const [contactPerson, setContactPerson] = useState("");
+  // create fields (simplified - company details filled in checkout)
   const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
   const [country, setCountry] = useState("");
   const [businessType, setBusinessType] = useState("");
-  const [password, setPassword] = useState("");
 
   // login fields
   const [loginEmail, setLoginEmail] = useState("");
@@ -38,19 +35,28 @@ export default function AccountModal({
     setError(null);
     setLoading(true);
     try {
-      const account = await createAccount(
-        {
-          companyName,
-          contactPerson,
-          email,
-          phoneNumber,
-          country,
-          businessType,
-        },
-        password,
-      );
+      // Simplified account creation - company details will be filled in checkout
+      const response = await fetch("/api/accounts/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          details: {
+            companyName: "Pending",
+            contactPerson: "Pending",
+            email,
+            phoneNumber: "Pending",
+            country,
+            businessType,
+          },
+          password,
+        }),
+      });
+      const data = (await response.json()) as { error?: string; account?: Account };
+      if (!response.ok) throw new Error(data.error || "Unable to create account.");
+      if (!data.account) throw new Error("Account response was incomplete.");
+
       setOpen(false);
-      onAuthenticated?.(account);
+      onAuthenticated?.(data.account);
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
     } finally {
@@ -63,9 +69,20 @@ export default function AccountModal({
     setError(null);
     setLoading(true);
     try {
-      const account = await loginAccount(loginEmail, loginPassword);
+      const response = await fetch("/api/accounts/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: loginEmail,
+          password: loginPassword,
+        }),
+      });
+      const data = (await response.json()) as { error?: string; account?: Account };
+      if (!response.ok) throw new Error(data.error || "Unable to log in.");
+      if (!data.account) throw new Error("Account response was incomplete.");
+
       setOpen(false);
-      onAuthenticated?.(account);
+      onAuthenticated?.(data.account);
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
     } finally {
@@ -80,7 +97,7 @@ export default function AccountModal({
           <DialogTitle>{mode === "create" ? "Create an account" : "Log in to your account"}</DialogTitle>
           <DialogDescription>
             {mode === "create"
-              ? "Create a business account to submit wholesale inquiries and view your submissions."
+              ? "Create a business account to start your wholesale inquiry. Complete your company details at checkout."
               : "Log in to continue to checkout and manage your inquiries."}
           </DialogDescription>
         </DialogHeader>
@@ -89,18 +106,27 @@ export default function AccountModal({
 
         {mode === "create" ? (
           <form onSubmit={handleCreate} className="mt-4 space-y-4">
-            <input required placeholder="Company name" value={companyName} onChange={(e) => setCompanyName(e.target.value)} className="input w-full" />
-            <input required placeholder="Contact person" value={contactPerson} onChange={(e) => setContactPerson(e.target.value)} className="input w-full" />
-            <input required type="email" placeholder="Business email" value={email} onChange={(e) => setEmail(e.target.value)} className="input w-full" />
-            <input required placeholder="Phone number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} className="input w-full" />
-            <input required placeholder="Country" value={country} onChange={(e) => setCountry(e.target.value)} className="input w-full" />
-            <select required value={businessType} onChange={(e) => setBusinessType(e.target.value)} className="input w-full">
-              <option value="">Select business type</option>
-              {BUSINESS_TYPES.map((t) => (
-                <option key={t} value={t}>{t}</option>
-              ))}
-            </select>
-            <input required type="password" placeholder="Password (min 8 chars)" value={password} onChange={(e) => setPassword(e.target.value)} className="input w-full" />
+            <label className="block">
+              <span className="text-sm font-medium">Business Email</span>
+              <input required type="email" placeholder="you@company.com" value={email} onChange={(e) => setEmail(e.target.value)} className="input w-full mt-1" />
+            </label>
+            <label className="block">
+              <span className="text-sm font-medium">Password</span>
+              <input required type="password" placeholder="Min 8 characters" minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} className="input w-full mt-1" />
+            </label>
+            <label className="block">
+              <span className="text-sm font-medium">Country</span>
+              <input required placeholder="e.g., USA" value={country} onChange={(e) => setCountry(e.target.value)} className="input w-full mt-1" />
+            </label>
+            <label className="block">
+              <span className="text-sm font-medium">Business Type</span>
+              <select required value={businessType} onChange={(e) => setBusinessType(e.target.value)} className="input w-full mt-1">
+                <option value="">Select business type</option>
+                {BUSINESS_TYPES.map((t) => (
+                  <option key={t} value={t}>{t}</option>
+                ))}
+              </select>
+            </label>
             <div className="flex items-center gap-3">
               <button disabled={loading} type="submit" className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2 text-sm font-medium text-white">
                 <UserPlus className="h-4 w-4" />
@@ -113,8 +139,14 @@ export default function AccountModal({
           </form>
         ) : (
           <form onSubmit={handleLogin} className="mt-4 space-y-4">
-            <input required type="email" placeholder="Business email" value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} className="input w-full" />
-            <input required type="password" placeholder="Password" value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} className="input w-full" />
+            <label className="block">
+              <span className="text-sm font-medium">Business Email</span>
+              <input required type="email" placeholder="you@company.com" value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} className="input w-full mt-1" />
+            </label>
+            <label className="block">
+              <span className="text-sm font-medium">Password</span>
+              <input required type="password" placeholder="Your password" value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} className="input w-full mt-1" />
+            </label>
             <div className="flex items-center gap-3">
               <button disabled={loading} type="submit" className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2 text-sm font-medium text-white">
                 <LogIn className="h-4 w-4" />

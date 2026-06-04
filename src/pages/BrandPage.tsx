@@ -164,8 +164,8 @@ export default function BrandPage() {
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <h3 className="text-sm text-muted-foreground">Other Vitala brands</h3>
           <p className="mt-2 text-muted-foreground">You can mix products from other brands to reach MOQ.</p>
-          <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {BRANDS.filter((b) => b.slug !== brand.slug).map((other) => (
+          <div className="mt-6 grid gap-6 grid-cols-2 md:grid-cols-4">
+            {BRANDS.filter((b) => b.slug !== brand.slug).slice(0, 4).map((other) => (
               <Link
                 key={other.slug}
                 to={`/brands/${other.slug}`}
