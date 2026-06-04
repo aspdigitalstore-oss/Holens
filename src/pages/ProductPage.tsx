@@ -87,13 +87,10 @@ export default function ProductPage() {
           <div className="mt-12 lg:grid">
             <Reveal>
               <div className="rounded-md border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-                <p className="text-[10px] uppercase tracking-[0.2em] text-white/70">
-                  {brand.name} / {brand.categoryGroup}
-                </p>
-                <h1 className="mt-4 font-display text-6xl leading-[0.95] tracking-tight text-white md:text-7xl">
+                <h1 className="font-display text-6xl leading-[0.95] tracking-tight text-white md:text-7xl">
                   {product.name}
                 </h1>
-                <p className="mt-5 font-display text-2xl text-white/80">{product.tagline}</p>
+                <p className="mt-4 font-display text-2xl text-white/80">{product.tagline}</p>
                 <p className="mt-6 max-w-xl leading-7 text-white/75 md:text-lg">
                   {product.description}
                 </p>

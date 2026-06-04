@@ -1,10 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowUpRight, Menu, ShoppingBag, X } from "lucide-react";
+import { ArrowUpRight, Menu, ShoppingBag, X, LogIn, UserPlus } from "lucide-react";
 import { CATEGORY_CONTENT } from "@/lib/content";
 import { COMPANY, NO_RETAIL_NOTICE, WHOLESALE_ONLY_LABEL } from "@/lib/company";
 import { useInquiry } from "@/lib/inquiry";
+import AccountModal from "@/components/site/AccountModal";
 
 const NAV = [
   { label: "Brands", to: "/brands" },
@@ -17,7 +18,19 @@ const NAV = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [accountModalOpen, setAccountModalOpen] = useState(false);
+  const [initialMode, setInitialMode] = useState<"create" | "login">("create");
   const { items } = useInquiry();
+
+  function openCreate() {
+    setInitialMode("create");
+    setAccountModalOpen(true);
+  }
+
+  function openLogin() {
+    setInitialMode("login");
+    setAccountModalOpen(true);
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -71,7 +84,13 @@ export function Navbar() {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center gap-2 lg:flex">
+            <button onClick={openCreate} className="inline-flex items-center gap-2 rounded-full border border-ink px-3 py-2 text-sm font-medium text-ink hover:bg-ink/5" title="Create account">
+              <UserPlus className="h-4 w-4" aria-hidden="true" />
+            </button>
+            <button onClick={openLogin} className="inline-flex items-center gap-2 rounded-full border border-ink px-3 py-2 text-sm font-medium text-ink hover:bg-ink/5" title="Log in">
+              <LogIn className="h-4 w-4" aria-hidden="true" />
+            </button>
             <Link
               to="/cart"
               className="group inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-ink/85"
@@ -142,6 +161,7 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+      <AccountModal open={accountModalOpen} setOpen={setAccountModalOpen} initialMode={initialMode} />
     </header>
   );
 }

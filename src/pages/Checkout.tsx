@@ -192,7 +192,7 @@ export default function Checkout() {
                   <div className="mt-6">
                     <p className="text-sm text-muted-foreground">The account dialog should be open above. If not, click the button below.</p>
                     <button type="button" onClick={() => setAccountModalOpen(true)} className="mt-3 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2 text-sm font-medium text-white">
-                      Open account dialog
+                      Create account/login in
                     </button>
                   </div>
                 )}
