@@ -10,6 +10,7 @@ const productImage = (productName: string, brandName: string, background: string
   makeSvgImage(productName, brandName, background);
 
 import sensodyneImg from "@/assets/Sensodyne.jpg";
+import parodontaxImg from "@/assets/Parodontax.jpg";
 
 export type Product = {
   id: string;
@@ -134,7 +135,7 @@ export const BRANDS: Brand[] = [
     supplyAvailability: "Wholesale planning with clinical quality support",
     distributionSupport: "Product training and retail display guidance",
     shippingAvailability: "International B2B shipping subject to destination requirements",
-    image: brandImage("Parodontax", "#6A8C4D"),
+    image: parodontaxImg,
     imageAlt: "Parodontax wholesale gum health brand imagery",
     products: [
       {
