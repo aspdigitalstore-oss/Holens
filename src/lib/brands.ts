@@ -9,6 +9,8 @@ const brandImage = (brandName: string, background: string) =>
 const productImage = (productName: string, brandName: string, background: string) =>
   makeSvgImage(productName, brandName, background);
 
+import sensodyneImg from "@/assets/Sensodyne.jpg";
+
 export type Product = {
   id: string;
   name: string;
@@ -59,7 +61,7 @@ export const BRANDS: Brand[] = [
     supplyAvailability: "Wholesale planning with branded quality control",
     distributionSupport: "Retail merchandising and pharmacy channel support",
     shippingAvailability: "International B2B shipping subject to destination requirements",
-    image: brandImage("Sensodyne", "#4E7DBF"),
+    image: sensodyneImg,
     imageAlt: "Sensodyne wholesale oral care brand imagery",
     products: [
       {
