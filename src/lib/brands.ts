@@ -22,7 +22,7 @@ import corsodylImg from "@/assets/Corsodyl.jpg";
 import CorsodylDailyMouthwash500mlImg from "@/assets/Corsodyl Daily Mouthwash.jpg";
 
 import polidentImg from "@/assets/Polident.jpg";
-import Polident3MinuteDentureCleanserTabletsImg from "@/assetsPolident 3 Minute Denture Cleanser Tablets.jpg";
+import Polident3MinuteDentureCleanserTabletsImg from "@/assets/Polident 3 Minute Denture Cleanser Tablets.jpg";
 
 import coregaImg from "@/assets/Corega.jpg";
 import CoregaUltraDentureFixativeCreamImg from "@/assets/Corega Ultra Denture Fixative Cream.jpg";
