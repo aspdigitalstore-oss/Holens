@@ -11,6 +11,20 @@ const productImage = (productName: string, brandName: string, background: string
 
 import sensodyneImg from "@/assets/Sensodyne.jpg";
 import parodontaxImg from "@/assets/Parodontax.jpg";
+import corsodylImg from "@/assets/Corsodyl.jpg";
+import polidentImg from "@/assets/Polident.jpg";
+import coregaImg from "@/assets/Corega.jpg";
+import aquafreshImg from "@/assets/Aquafresh.jpg";
+import centrumImg from "@/assets/Centrum.jpg";
+import emergenCImg from "@/assets/Emergen-C.jpg";
+import panadolImg from "@/assets/Panadol.jpg";
+import voltarenImg from "@/assets/Voltaren.jpg";  
+import advilImg from "@/assets/Advil.jpg";
+import therafluImg from "@/assets/Theraflu.jpg";
+import otrivinImg from "@/assets/Otrivin.jpg";
+import tumsImg from "@/assets/Tums.jpg";
+import nicotinellImg from "@/assets/Nicotinell.jpg";
+import chapstickImg from "@/assets/ChapStick.jpg";
 
 export type Product = {
   id: string;
@@ -193,7 +207,7 @@ export const BRANDS: Brand[] = [
     supplyAvailability: "Wholesale planning with clinical quality assurance",
     distributionSupport: "Retail and pharmacy merchandising support",
     shippingAvailability: "International B2B shipping subject to destination requirements",
-    image: brandImage("Corsodyl", "#3B7A89"),
+    image: corsodylImg,
     imageAlt: "Corsodyl wholesale antiseptic oral care brand imagery",
     products: [
       {
@@ -236,7 +250,7 @@ export const BRANDS: Brand[] = [
     supplyAvailability: "Wholesale manufacturing planned for repeat supply",
     distributionSupport: "Retail merchandising and product education",
     shippingAvailability: "International B2B shipping subject to destination requirements",
-    image: brandImage("Polident", "#7A5B9A"),
+    image: polidentImg,
     imageAlt: "Polident denture care brand imagery",
     products: [
       {
@@ -279,7 +293,7 @@ export const BRANDS: Brand[] = [
     supplyAvailability: "Wholesale production planning with quality oversight",
     distributionSupport: "Retail display guidance and product education",
     shippingAvailability: "International B2B shipping subject to destination requirements",
-    image: brandImage("Corega", "#A0503C"),
+    image: coregaImg,
     imageAlt: "Corega denture care brand imagery",
     products: [
       {
@@ -322,7 +336,7 @@ export const BRANDS: Brand[] = [
     supplyAvailability: "Wholesale planning with branded quality assurance",
     distributionSupport: "Retail marketing support and product positioning",
     shippingAvailability: "International B2B shipping subject to destination requirements",
-    image: brandImage("Aquafresh", "#2A9D8F"),
+    image: aquafreshImg,
     imageAlt: "Aquafresh oral care brand imagery",
     products: [
       {
@@ -380,7 +394,7 @@ export const BRANDS: Brand[] = [
     supplyAvailability: "Wholesale manufacturing with quality assurance",
     distributionSupport: "Retail merchandising guidance and nutrition positioning",
     shippingAvailability: "International B2B shipping subject to destination requirements",
-    image: brandImage("Centrum", "#E09F3E"),
+    image: centrumImg,
     imageAlt: "Centrum vitamin brand imagery",
     products: [
       {
@@ -438,7 +452,7 @@ export const BRANDS: Brand[] = [
     supplyAvailability: "Wholesale production with branded quality control",
     distributionSupport: "Retail positioning and product messaging support",
     shippingAvailability: "International B2B shipping subject to destination requirements",
-    image: brandImage("Emergen-C", "#E0522D"),
+    image: emergenCImg,
     imageAlt: "Emergen-C wellness brand imagery",
     products: [
       {
@@ -481,7 +495,7 @@ export const BRANDS: Brand[] = [
     supplyAvailability: "Wholesale production with quality assurance",
     distributionSupport: "Retail merchandising and channel support",
     shippingAvailability: "International B2B shipping subject to destination requirements",
-    image: brandImage("Panadol", "#57843A"),
+    image: panadolImg,
     imageAlt: "Panadol pain relief brand imagery",
     products: [
       {
@@ -524,7 +538,7 @@ export const BRANDS: Brand[] = [
     supplyAvailability: "Wholesale planning with medical quality support",
     distributionSupport: "Retail positioning and sales materials",
     shippingAvailability: "International B2B shipping subject to destination requirements",
-    image: brandImage("Voltaren", "#3F6F8A"),
+    image: voltarenImg,
     imageAlt: "Voltaren topical relief brand imagery",
     products: [
       {
@@ -567,7 +581,7 @@ export const BRANDS: Brand[] = [
     supplyAvailability: "Wholesale planning with quality assurance",
     distributionSupport: "Retail merchandising and channel support",
     shippingAvailability: "International B2B shipping subject to destination requirements",
-    image: brandImage("Advil", "#A12F2F"),
+    image: advilImg,
     imageAlt: "Advil pain relief brand imagery",
     products: [
       {
@@ -610,7 +624,7 @@ export const BRANDS: Brand[] = [
     supplyAvailability: "Wholesale planning with seasonal demand support",
     distributionSupport: "Retail merchandising and product information",
     shippingAvailability: "International B2B shipping subject to destination requirements",
-    image: brandImage("Theraflu", "#8A3FAA"),
+    image: therafluImg,
     imageAlt: "Theraflu cold and flu brand imagery",
     products: [
       {
@@ -653,7 +667,7 @@ export const BRANDS: Brand[] = [
     supplyAvailability: "Wholesale planning with clinical quality support",
     distributionSupport: "Retail merchandising and health channel support",
     shippingAvailability: "International B2B shipping subject to destination requirements",
-    image: brandImage("Otrivin", "#2F6F9B"),
+    image: otrivinImg,
     imageAlt: "Otrivin respiratory care brand imagery",
     products: [
       {
@@ -696,7 +710,7 @@ export const BRANDS: Brand[] = [
     supplyAvailability: "Wholesale planning with category-specific support",
     distributionSupport: "Retail merchandising and product education",
     shippingAvailability: "International B2B shipping subject to destination requirements",
-    image: brandImage("Tums", "#D87E3D"),
+    image: tumsImg,
     imageAlt: "Tums digestive health brand imagery",
     products: [
       {
@@ -739,7 +753,7 @@ export const BRANDS: Brand[] = [
     supplyAvailability: "Wholesale production with health quality assurance",
     distributionSupport: "Retail and pharmacy support materials",
     shippingAvailability: "International B2B shipping subject to destination requirements",
-    image: brandImage("Nicotinell", "#5C8B3F"),
+    image: nicotinellImg,
     imageAlt: "Nicotinell smoking cessation brand imagery",
     products: [
       {
@@ -782,7 +796,7 @@ export const BRANDS: Brand[] = [
     supplyAvailability: "Wholesale planning with strict quality standards",
     distributionSupport: "Retail merchandising and product positioning support",
     shippingAvailability: "International B2B shipping subject to destination requirements",
-    image: brandImage("ChapStick", "#C75432"),
+    image: chapstickImg,
     imageAlt: "ChapStick lip care brand imagery",
     products: [
       {
