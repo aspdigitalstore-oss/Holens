@@ -1,13 +1,8 @@
 import { useState, type FormEvent } from "react";
 import { Link, Navigate } from "react-router-dom";
-import { AlertCircle, CheckCircle2, LogIn, UserPlus } from "lucide-react";
-import {
-  BUSINESS_TYPES,
-  createAccount,
-  getAccountFromStorage,
-  loginAccount,
-  type Account,
-} from "@/lib/account";
+import { AlertCircle, CheckCircle2 } from "lucide-react";
+import { getAccountFromStorage, type Account, BUSINESS_TYPES } from "@/lib/account";
+import AccountModal from "@/components/site/AccountModal";
 import { COMPANY } from "@/lib/company";
 import { useInquiry, type InquiryDetails, type InquiryPayload } from "@/lib/inquiry";
 import { saveInquiryRecord } from "@/lib/inquiry-storage";
@@ -15,7 +10,7 @@ import { MIN_ORDER_QUANTITY, MOQ_NOTICE } from "@/lib/moq";
 import { MOQNotice, WholesaleNotice } from "@/components/site/WholesaleNotice";
 import { Seo } from "@/lib/seo";
 
-type AccountMode = "guest" | "create" | "login";
+
 
 const EMPTY_DETAILS: InquiryDetails = {
   companyName: "",
@@ -34,13 +29,9 @@ function detailsFromAccount(account: Account | null): InquiryDetails {
 export default function Checkout() {
   const { items, totalUnits, hasMinimum, clearInquiry } = useInquiry();
   const [account, setAccount] = useState<Account | null>(() => getAccountFromStorage());
-  const [accountMode, setAccountMode] = useState<AccountMode>(account ? "guest" : "create");
   const [details, setDetails] = useState<InquiryDetails>(() => detailsFromAccount(account));
-  const [password, setPassword] = useState("");
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [accountLoading, setAccountLoading] = useState(false);
+  const [accountModalOpen, setAccountModalOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [reference, setReference] = useState<string | null>(null);
 
@@ -52,18 +43,9 @@ export default function Checkout() {
 
   async function handleLogin(event: FormEvent) {
     event.preventDefault();
+    // login is handled in the modal; keep this for compatibility but open modal if called
     setError(null);
-    setAccountLoading(true);
-    try {
-      const loggedIn = await loginAccount(loginEmail, loginPassword);
-      setAccount(loggedIn);
-      setDetails(detailsFromAccount(loggedIn));
-      setAccountMode("guest");
-    } catch (loginError) {
-      setError(loginError instanceof Error ? loginError.message : "Unable to log in.");
-    } finally {
-      setAccountLoading(false);
-    }
+    setAccountModalOpen(true);
   }
 
   async function handleSubmit(event: FormEvent) {
@@ -77,21 +59,11 @@ export default function Checkout() {
 
     setLoading(true);
     try {
-      let activeAccount = account;
-      if (accountMode === "create") {
-        activeAccount = await createAccount(
-          {
-            companyName: details.companyName,
-            contactPerson: details.contactPerson,
-            email: details.email,
-            phoneNumber: details.phoneNumber,
-            country: details.country,
-            businessType: details.businessType,
-          },
-          password,
-        );
-        setAccount(activeAccount);
-        setAccountMode("guest");
+      if (!account) {
+        // require account creation/login via modal
+        setAccountModalOpen(true);
+        setLoading(false);
+        return;
       }
 
       const payload: InquiryPayload = {
@@ -99,7 +71,7 @@ export default function Checkout() {
         totalUnits,
         details,
         submittedAt: new Date().toISOString(),
-        accountId: activeAccount?.id,
+        accountId: account.id,
       };
 
       const response = await fetch("/api/inquiries", {
@@ -199,98 +171,23 @@ export default function Checkout() {
           <div className="mt-12 grid gap-10 lg:grid-cols-12">
             <form onSubmit={handleSubmit} className="space-y-8 lg:col-span-8">
               <section className="rounded-md border border-black/10 p-6 md:p-8">
-                <div className="flex flex-wrap items-start justify-between gap-4">
+                <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                      Account options
-                    </p>
-                    <h2 className="mt-2 font-display text-3xl">
-                      Create an account, log in or continue as a guest.
-                    </h2>
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Account</p>
+                    <h2 className="mt-2 font-display text-3xl">Create an account or log in</h2>
+                    <p className="mt-2 text-sm text-muted-foreground">We require a business account to submit wholesale inquiries. Use the popup to create or log in.</p>
                   </div>
                   {account && (
-                    <span className="rounded-full bg-lime/20 px-3 py-1 text-xs font-medium">
-                      Logged in: {account.company.email}
-                    </span>
+                    <span className="rounded-full bg-lime/20 px-3 py-1 text-xs font-medium">Logged in: {account.company.email}</span>
                   )}
                 </div>
 
-                <div
-                  className="mt-6 flex flex-wrap gap-2"
-                  role="tablist"
-                  aria-label="Account options"
-                >
-                  {(account ? (["guest", "create", "login"] as AccountMode[]) : (["create", "login"] as AccountMode[])).map((mode) => (
-                    <button
-                      key={mode}
-                      type="button"
-                      role="tab"
-                      aria-selected={accountMode === mode}
-                      onClick={() => setAccountMode(mode)}
-                      className={`rounded-full px-4 py-2 text-sm font-medium ${accountMode === mode ? "bg-ink text-white" : "border border-black/10 text-ink"}`}
-                    >
-                      {mode === "guest"
-                        ? "Guest checkout"
-                        : mode === "create"
-                          ? "Create account"
-                          : "Log in"}
-                    </button>
-                  ))}
-                </div>
-
-                {accountMode === "login" && (
-                  <div className="mt-6 grid gap-4 rounded-md bg-bone p-5 md:grid-cols-2">
-                    <label className="text-sm font-medium">
-                      Email
-                      <input
-                        type="email"
-                        required
-                        value={loginEmail}
-                        onChange={(event) => setLoginEmail(event.target.value)}
-                        className="input mt-1"
-                        autoComplete="email"
-                      />
-                    </label>
-                    <label className="text-sm font-medium">
-                      Password
-                      <input
-                        type="password"
-                        required
-                        value={loginPassword}
-                        onChange={(event) => setLoginPassword(event.target.value)}
-                        className="input mt-1"
-                        autoComplete="current-password"
-                      />
-                    </label>
-                    <button
-                      type="button"
-                      disabled={accountLoading}
-                      onClick={handleLogin}
-                      className="inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-white disabled:opacity-60"
-                    >
-                      <LogIn className="h-4 w-4" aria-hidden="true" />
-                      {accountLoading ? "Logging in..." : "Log in"}
+                {!account && (
+                  <div className="mt-6">
+                    <button type="button" onClick={() => setAccountModalOpen(true)} className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2 text-sm font-medium text-white">
+                      Open account dialog
                     </button>
                   </div>
-                )}
-
-                {accountMode === "create" && (
-                  <label className="mt-6 block max-w-md text-sm font-medium">
-                    Create a password
-                    <input
-                      type="password"
-                      minLength={8}
-                      required
-                      value={password}
-                      onChange={(event) => setPassword(event.target.value)}
-                      className="input mt-1"
-                      autoComplete="new-password"
-                    />
-                    <span className="mt-2 block text-xs font-normal text-muted-foreground">
-                      Use at least 8 characters. Your account will be created when the inquiry is
-                      submitted.
-                    </span>
-                  </label>
                 )}
               </section>
 
@@ -383,11 +280,10 @@ export default function Checkout() {
               )}
 
               <button
-                disabled={loading || accountMode === "login"}
+                disabled={loading || !account}
                 type="submit"
                 className="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3 text-sm font-medium text-white hover:bg-ink/85 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                {accountMode === "create" && <UserPlus className="h-4 w-4" aria-hidden="true" />}
                 {loading ? "Submitting inquiry..." : "Submit Inquiry"}
               </button>
             </form>
@@ -419,6 +315,15 @@ export default function Checkout() {
           </div>
         </div>
       </section>
+      <AccountModal
+        open={accountModalOpen}
+        setOpen={setAccountModalOpen}
+        initialMode="create"
+        onAuthenticated={(acct) => {
+          setAccount(acct);
+          setDetails(detailsFromAccount(acct));
+        }}
+      />
     </>
   );
 }
