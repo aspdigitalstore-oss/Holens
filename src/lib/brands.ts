@@ -10,6 +10,10 @@ const productImage = (productName: string, brandName: string, background: string
   makeSvgImage(productName, brandName, background);
 
 import sensodyneImg from "@/assets/Sensodyne.jpg";
+import sensodyneRepairProtect75mlImg from "@/assets/Sensodyne Repair & Protect Toothpaste.jpg";
+import SensodynePronamelGentleWhiteningToothpasteImg from "@/assets/Sensodyne Pronamel Gentle Whitening Toothpaste.jpg";
+import SensodyneRapidReliefToothpasteImg from "@/assets/Sensodyne Rapid Relief Toothpaste.jpg";
+
 import parodontaxImg from "@/assets/Parodontax.jpg";
 import corsodylImg from "@/assets/Corsodyl.jpg";
 import polidentImg from "@/assets/Polident.jpg";
@@ -91,7 +95,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready tube packaging",
           "Wholesale case quantities available",
         ],
-        image: productImage("Repair & Protect", "Sensodyne", "#4E7DBF"),
+        image: sensodyneRepairProtect75mlImg,
         imageAlt: "Sensodyne Repair & Protect Toothpaste 75ml",
       },
       {
@@ -106,7 +110,7 @@ export const BRANDS: Brand[] = [
           "Suitable for sensitive teeth",
           "Wholesale volume pricing available",
         ],
-        image: productImage("Gentle Whitening", "Sensodyne", "#4E7DBF"),
+        image: SensodynePronamelGentleWhiteningToothpasteImg,
         imageAlt: "Sensodyne Pronamel Gentle Whitening Toothpaste",
       },
       {
@@ -121,7 +125,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready format",
           "Wholesale case packing available",
         ],
-        image: productImage("Rapid Relief", "Sensodyne", "#4E7DBF"),
+        image: SensodyneRapidReliefToothpasteImg,
         imageAlt: "Sensodyne Rapid Relief Toothpaste",
       },
     ],
