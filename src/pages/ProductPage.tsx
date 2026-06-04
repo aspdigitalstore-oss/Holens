@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { ArrowUpRight, Check, ChevronRight, ShoppingBag } from "lucide-react";
+import { Check, ChevronRight, ShoppingBag } from "lucide-react";
 import { getProduct } from "@/lib/brands";
 import { useInquiry } from "@/lib/inquiry";
 import { MOQNotice, WholesaleNotice } from "@/components/site/WholesaleNotice";
@@ -55,15 +55,14 @@ export default function ProductPage() {
         }}
       />
 
-      <section className="relative overflow-hidden bg-bone pb-20 pt-36 lg:pb-28 lg:pt-44">
+      <section className="relative overflow-hidden bg-bone pb-20 pt-20 lg:pb-28 lg:pt-28">
         <div className="absolute inset-0">
           <img
             src={product.image}
             alt={product.imageAlt}
             decoding="async"
-            className="h-full w-full object-cover opacity-30"
+            className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-transparent" />
         </div>
         <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
           <nav
@@ -138,13 +137,7 @@ export default function ProductPage() {
                       Add to inquiry cart
                       <ArrowUpRight className="h-4 w-4 hover-arrow" aria-hidden="true" />
                     </button>
-                    <Link
-                      to={`/brands/${brand.slug}`}
-                      className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-6 py-3 text-sm font-medium text-white transition hover:bg-white/20"
-                    >
-                      Explore solutions
-                      <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                    </Link>
+                    {/* 'Explore solutions' link removed as requested */}
                   </div>
                   {added && (
                     <p className="mt-4 text-sm text-white/75" role="status">

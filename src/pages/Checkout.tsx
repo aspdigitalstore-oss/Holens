@@ -132,7 +132,7 @@ export default function Checkout() {
 
   if (reference) {
     return (
-      <section className="bg-bone pb-24 pt-40 lg:pt-48">
+      <section className="bg-bone pb-24 pt-24 lg:pt-32">
         <div className="mx-auto max-w-[760px] px-6 lg:px-10">
           <div className="rounded-md border border-black/10 bg-white p-8 md:p-12" role="status">
             <CheckCircle2 className="h-10 w-10 text-lime-dim" aria-hidden="true" />
@@ -174,7 +174,7 @@ export default function Checkout() {
         description="Complete your Vitala Global Holdings wholesale inquiry. No direct online payment is required; an invoice will follow after review."
         noIndex
       />
-      <section className="bg-bone pb-16 pt-40 lg:pt-48">
+      <section className="bg-bone pb-16 pt-24 lg:pt-32">
         <div className="mx-auto max-w-[1200px] px-6 lg:px-10">
           <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
             Wholesale checkout form

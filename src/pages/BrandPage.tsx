@@ -30,7 +30,7 @@ export default function BrandPage() {
         }}
       />
 
-      <section className="bg-ink pb-20 pt-36 text-white lg:pb-28 lg:pt-44">
+      <section className="bg-ink pb-20 pt-20 text-white lg:pb-28 lg:pt-28">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <nav
             className="flex flex-wrap items-center gap-2 text-xs text-white/60"
@@ -156,40 +156,6 @@ export default function BrandPage() {
           >
             Explore all products <ArrowUpRight className="h-4 w-4 hover-arrow" aria-hidden="true" />
           </Link>
-        </div>
-      </section>
-
-      <section className="bg-bone py-20">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-          <Reveal>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              Other product families
-            </p>
-            <h2 className="mt-3 font-display text-4xl md:text-5xl">Continue exploring Vitala.</h2>
-          </Reveal>
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {BRANDS.filter((entry) => entry.slug !== brand.slug)
-              .slice(0, 4)
-              .map((otherBrand) => (
-                <Link
-                  key={otherBrand.slug}
-                  to={`/brands/${otherBrand.slug}`}
-                  className="group overflow-hidden rounded-md bg-white ring-1 ring-black/5 transition hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <img
-                    src={otherBrand.image}
-                    alt={otherBrand.imageAlt}
-                    loading="lazy"
-                    decoding="async"
-                    className="aspect-[4/3] w-full object-cover"
-                  />
-                  <div className="p-5">
-                    <h3 className="font-display text-2xl">{otherBrand.name}</h3>
-                    <p className="mt-1 text-xs text-muted-foreground">{otherBrand.categoryGroup}</p>
-                  </div>
-                </Link>
-              ))}
-          </div>
         </div>
       </section>
 

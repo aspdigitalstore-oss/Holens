@@ -15,7 +15,7 @@ export default function Sustainability() {
         title="Sustainability — Vitala Global Holdings"
         description="Vitala Global Holdings' sustainability commitments: renewable energy, recyclable packaging, emissions reduction and clean formulation standards."
       />
-      <section className="bg-bone pt-40 pb-20 lg:pt-48">
+      <section className="bg-bone pt-24 pb-20 lg:pt-32">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <Reveal>
             <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">

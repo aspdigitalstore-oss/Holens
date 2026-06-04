@@ -47,7 +47,7 @@ export default function Wholesale() {
         jsonLd={FAQ_JSON_LD}
       />
 
-      <section className="bg-ink pb-20 pt-40 text-white lg:pb-28 lg:pt-48">
+      <section className="bg-ink pb-20 pt-24 text-white lg:pb-28 lg:pt-32">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <Reveal>
             <p className="text-[10px] uppercase tracking-[0.2em] text-lime">Wholesale only</p>

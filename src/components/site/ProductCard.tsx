@@ -35,9 +35,12 @@ export function ProductCard({ brand, product }: { brand: Brand; product: Product
       </div>
       <div className="flex flex-1 flex-col p-6">
         <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+          {brand.name}
+        </p>
+        <p className="mt-2 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
           {brand.categoryGroup}
         </p>
-        <h3 className="mt-2 font-display text-3xl">{product.name}</h3>
+        <h3 className="mt-3 font-display text-3xl">{product.name}</h3>
         <p className="mt-3 text-sm leading-6 text-muted-foreground">{product.description}</p>
         <div className="mt-6 flex flex-col gap-3">
           <Link

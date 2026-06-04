@@ -17,7 +17,7 @@ export default function Cart() {
         description="Review products and quantities in your Vitala Global Holdings wholesale inquiry cart."
         noIndex
       />
-      <section className="bg-bone pb-16 pt-40 lg:pt-48">
+      <section className="bg-bone pb-16 pt-24 lg:pt-32">
         <div className="mx-auto max-w-[1200px] px-6 lg:px-10">
           <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
             Wholesale inquiry cart

@@ -33,7 +33,7 @@ export default function CategoryPage() {
         }}
       />
 
-      <section className="bg-ink pb-20 pt-36 text-white lg:pb-28 lg:pt-44">
+      <section className="bg-ink pb-20 pt-20 text-white lg:pb-28 lg:pt-28">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <nav className="flex items-center gap-2 text-xs text-white/60" aria-label="Breadcrumb">
             <Link to="/" className="hover:text-white">

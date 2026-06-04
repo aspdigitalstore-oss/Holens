@@ -21,7 +21,7 @@ export default function Brands() {
           "wholesale oral care products",
         ]}
       />
-      <section className="bg-bone pb-20 pt-40 lg:pt-48">
+      <section className="bg-bone pb-20 pt-24 lg:pt-32">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <Reveal>
             <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
@@ -101,8 +101,8 @@ export default function Brands() {
                     </p>
                     <h3 className="mt-2 font-display text-3xl">{brand.name}</h3>
                     <p className="mt-3 text-sm leading-6 text-muted-foreground">{brand.short}</p>
-                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium">
-                      View products{" "}
+                    <span className="mt-6 inline-flex w-max items-center gap-2 rounded-full border border-black/10 bg-bone px-4 py-3 text-sm font-medium text-ink transition hover:border-ink/30 hover:bg-white">
+                      View products
                       <ArrowUpRight className="h-4 w-4 hover-arrow" aria-hidden="true" />
                     </span>
                   </div>

@@ -9,7 +9,7 @@ export default function Innovation() {
         title="Innovation & R&D — Vitala Global Holdings"
         description="Inside the Vitala Global Holdings R&D engine — 400+ studies a year, four research centres and a network of clinical partners."
       />
-      <section className="bg-bone pt-40 pb-20 lg:pt-48">
+      <section className="bg-bone pt-24 pb-20 lg:pt-32">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <Reveal>
             <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">

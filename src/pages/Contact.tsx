@@ -47,7 +47,7 @@ export default function Contact() {
         title="Contact Vitala Global Holdings Wholesale Sales"
         description="Contact Vitala Global Holdings for wholesale skincare, oral care, personal care, distribution and private label inquiries. B2B buyers only."
       />
-      <section className="bg-ink pb-20 pt-40 text-white lg:pt-48">
+      <section className="bg-ink pb-20 pt-24 text-white lg:pt-32">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <Reveal>
             <p className="text-[10px] uppercase tracking-[0.2em] text-lime">

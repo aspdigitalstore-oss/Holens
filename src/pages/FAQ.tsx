@@ -12,7 +12,7 @@ export default function FAQ() {
         description="Answers about Vitala Global Holdings wholesale-only ordering, the 2000-unit mixed MOQ, inquiry checkout, USA supply and private label program reviews."
         jsonLd={FAQ_JSON_LD}
       />
-      <section className="bg-bone pb-20 pt-40 lg:pt-48">
+      <section className="bg-bone pb-20 pt-24 lg:pt-32">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <Reveal>
             <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
