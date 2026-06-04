@@ -15,7 +15,7 @@ import SensodynePronamelGentleWhiteningToothpasteImg from "@/assets/Sensodyne Pr
 import SensodyneRapidReliefToothpasteImg from "@/assets/Sensodyne Rapid Relief Toothpaste.jpg";
 
 import parodontaxImg from "@/assets/Parodontax.jpg";
-import ParodontaxCompleteProtectionToothpaste75mlImg from "@/assets/Parodontax Complete Protection Toothpaste 75ml.jpg";
+import ParodontaxCompleteProtectionToothpaste75mlImg from "@/assets/Parodontax Complete Protection Toothpaste.jpg";
 import ParodontaxActiveGumHealthMouthwashImg from "@/assets/Parodontax Active Gum Health Mouthwash.jpg";
 
 import corsodylImg from "@/assets/Corsodyl.jpg";
