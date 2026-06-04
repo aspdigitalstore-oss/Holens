@@ -159,6 +159,31 @@ export default function BrandPage() {
         </div>
       </section>
 
+      {/* Show other brands for mixed-brand ordering */}
+      <section className="bg-bone py-16 lg:py-20">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+          <h3 className="text-sm text-muted-foreground">Other Vitala brands</h3>
+          <p className="mt-2 text-muted-foreground">You can mix products from other brands to reach MOQ.</p>
+          <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {BRANDS.filter((b) => b.slug !== brand.slug).map((other) => (
+              <Link
+                key={other.slug}
+                to={`/brands/${other.slug}`}
+                className="group block overflow-hidden rounded-md bg-white ring-1 ring-black/5 transition hover:-translate-y-1 hover:shadow-md"
+              >
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img src={other.image} alt={other.imageAlt} className="h-full w-full object-cover" />
+                </div>
+                <div className="p-4">
+                  <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{other.categoryGroup}</p>
+                  <h4 className="mt-1 font-display text-2xl">{other.name}</h4>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <ContactPanel />
     </>
   );

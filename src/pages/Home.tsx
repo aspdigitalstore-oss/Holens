@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { ArrowUpRight, Building2, Globe2, PackageCheck, ShieldCheck } from "lucide-react";
 import { VideoHero } from "@/components/site/VideoHero";
+import AccountModal from "@/components/site/AccountModal";
 import { Reveal } from "@/components/site/Reveal";
 import { FAQSection, FAQ_JSON_LD } from "@/components/site/FAQSection";
 import { ContactPanel } from "@/components/site/ContactPanel";
@@ -21,6 +23,19 @@ const STATS = [
 ];
 
 export default function Home() {
+  const [accountModalOpen, setAccountModalOpen] = useState(false);
+  const [initialMode, setInitialMode] = useState<"create" | "login">("create");
+
+  function openCreate() {
+    setInitialMode("create");
+    setAccountModalOpen(true);
+  }
+
+  function openLogin() {
+    setInitialMode("login");
+    setAccountModalOpen(true);
+  }
+
   return (
     <>
       <Seo
@@ -77,9 +92,17 @@ export default function Home() {
             >
               How ordering works
             </Link>
+            <button onClick={openCreate} className="inline-flex items-center rounded-full border border-white/20 px-4 py-2 text-sm font-medium text-white">
+              Create account
+            </button>
+            <button onClick={openLogin} className="inline-flex items-center rounded-full border border-white/20 px-4 py-2 text-sm font-medium text-white">
+              Log in
+            </button>
           </div>
         }
       />
+
+      <AccountModal open={accountModalOpen} setOpen={setAccountModalOpen} initialMode={initialMode} />
 
       <section className="border-y border-black/5 bg-bone">
         <div className="mx-auto grid max-w-[1400px] grid-cols-2 divide-x divide-black/10 px-6 lg:grid-cols-4 lg:px-10">
