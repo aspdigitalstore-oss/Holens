@@ -220,7 +220,7 @@ export default function Checkout() {
                   role="tablist"
                   aria-label="Account options"
                 >
-                  {(["guest", "create", "login"] as AccountMode[]).map((mode) => (
+                  {(account ? (["guest", "create", "login"] as AccountMode[]) : (["create", "login"] as AccountMode[])).map((mode) => (
                     <button
                       key={mode}
                       type="button"
