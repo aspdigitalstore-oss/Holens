@@ -548,7 +548,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready pack",
           "Wholesale case quantities available",
         ],
-        image: PanadolExtraTablets24Pack,
+        image: PanadolExtraTablets24PackImg,
         imageAlt: "Panadol Extra Tablets 24 Pack",
       },
     ],
@@ -591,7 +591,8 @@ export const BRANDS: Brand[] = [
           "Retail-ready tube format",
           "Wholesale case quantities available",
         ],
-        image: VoltarenEmulgel100g,
+        image: VoltarenEmulgel100gImg,
+
         imageAlt: "Voltaren Emulgel 1% 100g",
       },
     ],
@@ -634,7 +635,8 @@ export const BRANDS: Brand[] = [
           "Retail-ready bottle",
           "Wholesale case quantities available",
         ],
-        image: AdvilIbuprofen200mg50Tablets,
+        image: AdvilIbuprofen200mg50TabletsImg,
+
         imageAlt: "Advil Ibuprofen 200mg 50 Tablets",
       },
     ],
@@ -677,7 +679,8 @@ export const BRANDS: Brand[] = [
           "Retail-ready sachet packaging",
           "Wholesale volume pricing available",
         ],
-        image: TherafluFluandColdReliefSachets,
+        image: TherafluFluandColdReliefSachetsImg,
+
         imageAlt: "Theraflu Flu & Cold Relief Sachets",
       },
     ],
@@ -720,7 +723,8 @@ export const BRANDS: Brand[] = [
           "Retail-ready bottle",
           "Wholesale case pricing available",
         ],
-        image: OtrivinNasalSpray,
+        image: OtrivinNasalSpray10mlImg,
+
         imageAlt: "Otrivin Nasal Spray 10ml",
       },
     ],
@@ -763,7 +767,8 @@ export const BRANDS: Brand[] = [
           "Retail-ready presentation",
           "Wholesale case quantities available",
         ],
-        image: TumsAntacidTabletsAssortedFruit,
+        image: TumsAntacidTabletsAssortedFruitImg,
+
         imageAlt: "Tums Antacid Tablets Assorted Fruit",
       },
     ],
@@ -806,7 +811,8 @@ export const BRANDS: Brand[] = [
           "Mint flavor",
           "Wholesale case quantities available",
         ],
-        image: NicotinellNicotineGumMint2mg,
+        image: NicotinellNicotineGumMint2mgImg,
+
         imageAlt: "Nicotinell Nicotine Gum Mint 2mg",
       },
     ],
@@ -849,7 +855,8 @@ export const BRANDS: Brand[] = [
           "Retail-ready stick format",
           "Wholesale case quantities available",
         ],
-        image: ChapStickClassicOriginalLipBalm,
+        image: ChapStickClassicOriginalLipBalmImg,
+
         imageAlt: "ChapStick Classic Original Lip Balm",
       },
     ],
