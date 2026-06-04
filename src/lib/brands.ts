@@ -19,7 +19,7 @@ import ParodontaxCompleteProtectionToothpasteImg from "@/assets/Parodontax Compl
 import ParodontaxActiveGumHealthMouthwashImg from "@/assets/Parodontax Active Gum Health Mouthwash.jpg";
 
 import corsodylImg from "@/assets/Corsodyl.jpg";
-import CorsodylDailyMouthwash500mlImg from "@/assets/Corsodyl Daily Mouthwash 500ml.jpg";
+import CorsodylDailyMouthwash500mlImg from "@/assets/Corsodyl Daily Mouthwash.jpg";
 
 import polidentImg from "@/assets/Polident.jpg";
 import Polident3MinuteDentureCleanserTabletsImg from "@/assetsPolident 3 Minute Denture Cleanser Tablets.jpg";
