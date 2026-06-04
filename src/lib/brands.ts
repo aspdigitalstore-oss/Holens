@@ -48,10 +48,10 @@ import advilImg from "@/assets/Advil.jpg";
 import AdvilIbuprofen200mg50TabletsImg from "@/assets/Advil Ibuprofen 200mg 50 Tablets.jpg";
 
 import therafluImg from "@/assets/Theraflu.jpg";
-import TherafluFlu&ColdReliefSachetsImg from "@/assets/Theraflu Flu & Cold Relief Sachets.jpg";
+import TherafluFluandColdReliefSachetsImg from "@/assets/Theraflu Flu & Cold Relief Sachets.jpg";
 
 import otrivinImg from "@/assets/Otrivin.jpg";
-import Otrivin Nasal Spray 10mlImg from "@/assets/Otrivin Nasal Spray.jpg";
+import OtrivinNasalSpray10mlImg from "@/assets/Otrivin Nasal Spray.jpg";
 
 import tumsImg from "@/assets/Tums.jpg";
 import TumsAntacidTabletsAssortedFruitImg from "@/assets/Tums Antacid Tablets Assorted Fruit.jpg";
@@ -677,7 +677,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready sachet packaging",
           "Wholesale volume pricing available",
         ],
-        image: TherafluFlu&ColdReliefSachets,
+        image: TherafluFluandColdReliefSachets,
         imageAlt: "Theraflu Flu & Cold Relief Sachets",
       },
     ],
