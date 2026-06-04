@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { Check, ChevronRight, ShoppingBag } from "lucide-react";
+import { ArrowUpRight, Check, ChevronRight, ShoppingBag } from "lucide-react";
 import { getProduct } from "@/lib/brands";
 import { useInquiry } from "@/lib/inquiry";
 import { MOQNotice, WholesaleNotice } from "@/components/site/WholesaleNotice";
