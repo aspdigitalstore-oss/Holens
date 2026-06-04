@@ -15,6 +15,9 @@ import SensodynePronamelGentleWhiteningToothpasteImg from "@/assets/Sensodyne Pr
 import SensodyneRapidReliefToothpasteImg from "@/assets/Sensodyne Rapid Relief Toothpaste.jpg";
 
 import parodontaxImg from "@/assets/Parodontax.jpg";
+import ParodontaxCompleteProtectionToothpasteImg from "@/assets/Parodontax Complete Protection Toothpaste 75ml.jpg";
+import ParodontaxActiveGumHealthMouthwashImg from "@/assets/Parodontax Active Gum Health Mouthwash.jpg";
+
 import corsodylImg from "@/assets/Corsodyl.jpg";
 import polidentImg from "@/assets/Polident.jpg";
 import coregaImg from "@/assets/Corega.jpg";
@@ -168,7 +171,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready pack",
           "Wholesale case quantities available",
         ],
-        image: productImage("Complete Protection", "Parodontax", "#6A8C4D"),
+        image: ParodontaxCompleteProtectionToothpasteImg,
         imageAlt: "Parodontax Complete Protection Toothpaste 75ml",
       },
       {
@@ -183,7 +186,7 @@ export const BRANDS: Brand[] = [
           "Retail-friendly bottle",
           "Wholesale case pricing available",
         ],
-        image: productImage("Gum Health Mouthwash", "Parodontax", "#6A8C4D"),
+        image: ParodontaxActiveGumHealthMouthwashImg,
         imageAlt: "Parodontax Active Gum Health Mouthwash",
       },
     ],
