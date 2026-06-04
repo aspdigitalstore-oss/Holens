@@ -56,15 +56,7 @@ export default function ProductPage() {
       />
 
       <section className="relative overflow-hidden bg-bone pb-20 pt-20 lg:pb-28 lg:pt-28">
-        <div className="absolute inset-0">
-          <img
-            src={product.image}
-            alt={product.imageAlt}
-            decoding="async"
-            className="h-full w-full object-cover"
-          />
-        </div>
-        <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <nav
             className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground"
             aria-label="Breadcrumb"
@@ -84,7 +76,7 @@ export default function ProductPage() {
             <span>{product.name}</span>
           </nav>
 
-          <div className="mt-12 lg:grid">
+          <div className="mt-12 lg:grid lg:grid-cols-2 lg:gap-12 lg:items-start">
             <Reveal>
               <div className="rounded-md border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
                 <h1 className="font-display text-6xl leading-[0.95] tracking-tight text-white md:text-7xl">
@@ -144,6 +136,17 @@ export default function ProductPage() {
                     </p>
                   )}
                 </div>
+              </div>
+            </Reveal>
+
+            <Reveal>
+              <div className="mt-8 lg:mt-0 rounded-md border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+                <img
+                  src={product.image}
+                  alt={product.imageAlt}
+                  decoding="async"
+                  className="w-full h-auto object-contain rounded"
+                />
               </div>
             </Reveal>
           </div>
