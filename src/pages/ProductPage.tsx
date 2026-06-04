@@ -55,7 +55,7 @@ export default function ProductPage() {
         }}
       />
 
-      <section className="relative overflow-hidden bg-bone pb-20 pt-20 lg:pb-28 lg:pt-28">
+      <section className="relative overflow-hidden bg-black pb-20 pt-20 lg:pb-28 lg:pt-28">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <nav
             className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground"
