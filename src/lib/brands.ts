@@ -39,13 +39,30 @@ import emergenCImg from "@/assets/Emergen-C.jpg";
 import EmergenCVitaminCOrangeImg from "@/assets/Emergen-C Vitamin C Orange.jpg";
 
 import panadolImg from "@/assets/Panadol.jpg";
+import PanadolExtraTablets24PackImg from "@/assets/Panadol Extra Tablets 24 Pack.jpg";
+
 import voltarenImg from "@/assets/Voltaren.jpg";  
+import VoltarenEmulgel100gImg from "@/assets/Voltaren Emulgel 100g.jpg";
+
 import advilImg from "@/assets/Advil.jpg";
+import AdvilIbuprofen200mg50TabletsImg from "@/assets/Advil Ibuprofen 200mg 50 Tablets.jpg";
+
 import therafluImg from "@/assets/Theraflu.jpg";
+import TherafluFlu&ColdReliefSachetsImg from "@/assets/Theraflu Flu & Cold Relief Sachets.jpg";
+
 import otrivinImg from "@/assets/Otrivin.jpg";
+import Otrivin Nasal Spray 10mlImg from "@/assets/Otrivin Nasal Spray.jpg";
+
 import tumsImg from "@/assets/Tums.jpg";
+import TumsAntacidTabletsAssortedFruitImg from "@/assets/Tums Antacid Tablets Assorted Fruit.jpg";
+
 import nicotinellImg from "@/assets/Nicotinell.jpg";
+import NicotinellNicotineGumMint2mgImg from "@/assets/Nicotinell Nicotine Gum Mint.jpg";
+
 import chapstickImg from "@/assets/ChapStick.jpg";
+import ChapStickClassicOriginalLipBalmImg from "@/assets/ChapStick Classic Original Lip Balm.jpg";
+
+import { Tablets } from "lucide-react";
 
 export type Product = {
   id: string;
@@ -531,7 +548,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready pack",
           "Wholesale case quantities available",
         ],
-        image: productImage("Extra Tablets", "Panadol", "#57843A"),
+        image: PanadolExtraTablets24Pack,
         imageAlt: "Panadol Extra Tablets 24 Pack",
       },
     ],
@@ -574,7 +591,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready tube format",
           "Wholesale case quantities available",
         ],
-        image: productImage("Emulgel 1%", "Voltaren", "#3F6F8A"),
+        image: VoltarenEmulgel100g,
         imageAlt: "Voltaren Emulgel 1% 100g",
       },
     ],
@@ -617,7 +634,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready bottle",
           "Wholesale case quantities available",
         ],
-        image: productImage("Ibuprofen 200mg", "Advil", "#A12F2F"),
+        image: AdvilIbuprofen200mg50Tablets,
         imageAlt: "Advil Ibuprofen 200mg 50 Tablets",
       },
     ],
@@ -660,7 +677,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready sachet packaging",
           "Wholesale volume pricing available",
         ],
-        image: productImage("Flu & Cold Relief", "Theraflu", "#8A3FAA"),
+        image: TherafluFlu&ColdReliefSachets,
         imageAlt: "Theraflu Flu & Cold Relief Sachets",
       },
     ],
@@ -703,7 +720,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready bottle",
           "Wholesale case pricing available",
         ],
-        image: productImage("Nasal Spray", "Otrivin", "#2F6F9B"),
+        image: OtrivinNasalSpray,
         imageAlt: "Otrivin Nasal Spray 10ml",
       },
     ],
@@ -746,7 +763,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready presentation",
           "Wholesale case quantities available",
         ],
-        image: productImage("Antacid Tablets", "Tums", "#D87E3D"),
+        image: TumsAntacidTabletsAssortedFruit,
         imageAlt: "Tums Antacid Tablets Assorted Fruit",
       },
     ],
@@ -789,7 +806,7 @@ export const BRANDS: Brand[] = [
           "Mint flavor",
           "Wholesale case quantities available",
         ],
-        image: productImage("Nicotine Gum", "Nicotinell", "#5C8B3F"),
+        image: NicotinellNicotineGumMint2mg,
         imageAlt: "Nicotinell Nicotine Gum Mint 2mg",
       },
     ],
@@ -832,7 +849,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready stick format",
           "Wholesale case quantities available",
         ],
-        image: productImage("Classic Original", "ChapStick", "#C75432"),
+        image: ChapStickClassicOriginalLipBalm,
         imageAlt: "ChapStick Classic Original Lip Balm",
       },
     ],
