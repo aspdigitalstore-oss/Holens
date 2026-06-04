@@ -15,15 +15,29 @@ import SensodynePronamelGentleWhiteningToothpasteImg from "@/assets/Sensodyne Pr
 import SensodyneRapidReliefToothpasteImg from "@/assets/Sensodyne Rapid Relief Toothpaste.jpg";
 
 import parodontaxImg from "@/assets/Parodontax.jpg";
-import ParodontaxCompleteProtectionToothpaste75mlImg from "@/assets/Parodontax Complete Protection Toothpaste.jpg";
+import ParodontaxCompleteProtectionToothpasteImg from "@/assets/Parodontax Complete Protection Toothpaste.jpg";
 import ParodontaxActiveGumHealthMouthwashImg from "@/assets/Parodontax Active Gum Health Mouthwash.jpg";
 
 import corsodylImg from "@/assets/Corsodyl.jpg";
+import CorsodylDailyMouthwash500mlImg from "@/assets/Corsodyl Daily Mouthwash 500ml.jpg";
+
 import polidentImg from "@/assets/Polident.jpg";
+import Polident3MinuteDentureCleanserTabletsImg from "@/assetsPolident 3 Minute Denture Cleanser Tablets.jpg";
+
 import coregaImg from "@/assets/Corega.jpg";
+import CoregaUltraDentureFixativeCreamImg from "@/assets/Corega Ultra Denture Fixative Cream.jpg";
+
 import aquafreshImg from "@/assets/Aquafresh.jpg";
+import AquafreshTripleProtectionToothpasteImg from "@/assets/Aquafresh Triple Protection Toothpaste.jpg";
+import AquafreshKidsToothpasteImg from "@/assets/Aquafresh Kids Toothpaste 3-5 Years.jpg";
+
 import centrumImg from "@/assets/Centrum.jpg";
+import CentrumAdvanceMultivitamins30TabletsImg from "@/assets/Centrum Advance Multivitamins 30 Tablets.jpg";
+import CentrumWomenMultivitaminsImg from "@/assets/Centrum Women Multivitamins.jpg";
+
 import emergenCImg from "@/assets/Emergen-C.jpg";
+import EmergenCVitaminCOrangeImg from "@/assets/Emergen-C Vitamin C Orange.jpg";
+
 import panadolImg from "@/assets/Panadol.jpg";
 import voltarenImg from "@/assets/Voltaren.jpg";  
 import advilImg from "@/assets/Advil.jpg";
@@ -171,7 +185,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready pack",
           "Wholesale case quantities available",
         ],
-        image: ParodontaxCompleteProtectionToothpaste75mlImg,
+        image: ParodontaxCompleteProtectionToothpasteImg,
         imageAlt: "Parodontax Complete Protection Toothpaste 75ml",
       },
       {
@@ -229,7 +243,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready bottle format",
           "Wholesale case availability",
         ],
-        image: productImage("Daily Mouthwash", "Corsodyl", "#3B7A89"),
+        image: CorsodylDailyMouthwash500mlImg,
         imageAlt: "Corsodyl Daily Mouthwash 500ml",
       },
     ],
@@ -272,7 +286,7 @@ export const BRANDS: Brand[] = [
           "Retail-friendly dosing format",
           "Wholesale case quantities available",
         ],
-        image: productImage("Denture Cleanser", "Polident", "#7A5B9A"),
+        image: Polident3MinuteDentureCleanserTabletsImg,
         imageAlt: "Polident 3 Minute Denture Cleanser Tablets",
       },
     ],
@@ -315,7 +329,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready tube format",
           "Wholesale case pack options",
         ],
-        image: productImage("Fixative Cream", "Corega", "#A0503C"),
+        image: CoregaUltraDentureFixativeCreamImg,
         imageAlt: "Corega Ultra Denture Fixative Cream",
       },
     ],
@@ -358,7 +372,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready packaging",
           "Wholesale case quantities available",
         ],
-        image: productImage("Triple Protection", "Aquafresh", "#2A9D8F"),
+        image: AquafreshTripleProtectionToothpasteImg,
         imageAlt: "Aquafresh Triple Protection Toothpaste",
       },
       {
@@ -373,7 +387,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready packaging",
           "Wholesale volume pricing available",
         ],
-        image: productImage("Kids Toothpaste", "Aquafresh", "#2A9D8F"),
+        image: AquafreshKidsToothpasteImg,
         imageAlt: "Aquafresh Kids Toothpaste 3-5 Years",
       },
     ],
@@ -416,7 +430,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready bottle",
           "Wholesale case quantities available",
         ],
-        image: productImage("Advance Multivitamins", "Centrum", "#E09F3E"),
+        image: CentrumAdvanceMultivitamins30TabletsImg,
         imageAlt: "Centrum Advance Multivitamins 30 Tablets",
       },
       {
@@ -431,7 +445,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready presentation",
           "Wholesale volume pricing available",
         ],
-        image: productImage("Women Multivitamins", "Centrum", "#E09F3E"),
+        image: CentrumWomenMultivitaminsImg,
         imageAlt: "Centrum Women Multivitamins",
       },
     ],
@@ -474,7 +488,7 @@ export const BRANDS: Brand[] = [
           "Retail-ready packaging",
           "Wholesale case quantities available",
         ],
-        image: productImage("Vitamin C Orange", "Emergen-C", "#E0522D"),
+        image: EmergenCVitaminCOrangeImg,
         imageAlt: "Emergen-C Vitamin C Orange",
       },
     ],
