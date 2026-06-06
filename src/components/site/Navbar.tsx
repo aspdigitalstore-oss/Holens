@@ -21,25 +21,20 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [brandsPanelOpen, setBrandsPanelOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("Cosmetics & Skincare");
   const [accountModalOpen, setAccountModalOpen] = useState(false);
   const [initialMode, setInitialMode] = useState<"create" | "login">("create");
   const { items } = useInquiry();
 
   const MEGA_CATEGORIES = [
-    { label: "Cosmetics & Skincare", groups: ["Dermaceutical Skincare"] },
-    { label: "Oral Care", groups: ["Oral Health", "Denture Care"] },
-    { label: "Healthcare", groups: ["Pain Relief", "Cold & Flu", "Respiratory Care", "Digestive Health", "Quit Smoking"] },
-    { label: "Nutrition", groups: ["Vitamins & Supplements", "Wellness & Nutrition", "Children Nutrition"] },
-    { label: "Personal Care", groups: ["Lip Care"] },
-    { label: "Wellness", groups: ["Wellness & Nutrition", "Sleep & Wellness"] },
+    "Cosmetics & Skincare",
+    "Oral Care",
+    "Healthcare",
+    "Nutrition",
+    "Personal Care",
+    "Wellness",
   ];
 
-  const activeCategory = MEGA_CATEGORIES.find((category) => category.label === selectedCategory);
-  const filteredBrands = BRANDS.filter((brand) =>
-    activeCategory ? activeCategory.groups.includes(brand.categoryGroup) : true,
-  );
-  const featuredBrands = filteredBrands.slice(0, 12);
+  const featuredBrands = BRANDS;
 
   function openCreate() {
     setInitialMode("create");
@@ -109,105 +104,94 @@ export function Navbar() {
 
                   {brandsPanelOpen && (
                     <div
-                      className="absolute left-1/2 top-full z-40 mt-3 w-[95vw] max-w-[1600px] -translate-x-1/2 overflow-hidden rounded-[28px] border border-white/10 bg-white/90 shadow-[0_24px_80px_rgba(0,0,0,0.18)] backdrop-blur-2xl"
+                      className="absolute left-1/2 top-full z-40 mt-3 w-[90vw] max-w-[1600px] -translate-x-1/2 overflow-hidden rounded-[28px] border border-slate-200/10 bg-white/95 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur-xl"
                       style={{ overscrollBehavior: "contain" }}
                     >
-                      <div className="grid min-h-[55vh] max-h-[75vh] grid-cols-1 overflow-hidden lg:grid-cols-[280px_1fr]">
-                        <aside className="sticky top-0 hidden h-full overflow-y-auto border-r border-white/10 bg-slate-950/80 p-6 text-white lg:block">
+                      <div className="grid min-h-[55vh] max-h-[75vh] grid-cols-1 overflow-hidden lg:grid-cols-[260px_1fr]">
+                        <aside className="sticky top-0 hidden h-full overflow-y-auto border-r border-slate-200/10 bg-slate-950/95 p-6 text-white lg:block">
                           <p className="text-[11px] uppercase tracking-[0.3em] text-white/50">
                             Product categories
                           </p>
                           <div className="mt-6 space-y-3">
                             {MEGA_CATEGORIES.map((category) => (
-                              <button
-                                key={category.label}
-                                type="button"
-                                onClick={() => setSelectedCategory(category.label)}
-                                onMouseEnter={() => setSelectedCategory(category.label)}
-                                onFocus={() => setSelectedCategory(category.label)}
-                                className={`w-full rounded-3xl border px-4 py-3 text-left text-sm transition ${
-                                  category.label === selectedCategory
-                                    ? "border-white/20 bg-white/10 text-white shadow-lg shadow-black/10"
-                                    : "border-white/5 bg-white/5 text-white/70 hover:border-white/20 hover:bg-white/10 hover:text-white"
-                                }`}
+                              <div
+                                key={category}
+                                className="rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/80"
                               >
-                                {category.label}
-                              </button>
+                                {category}
+                              </div>
                             ))}
                           </div>
                         </aside>
 
-                        <section className="overflow-hidden bg-slate-950/90 p-5 md:p-6">
-                          <div className="mb-5 flex items-center justify-between gap-4 rounded-3xl bg-white/5 px-5 py-4 text-white/80 shadow-inner shadow-black/10 backdrop-blur-sm">
+                        <section className="overflow-hidden bg-slate-950/95 p-4 md:p-5">
+                          <div className="mb-5 flex flex-col gap-3 rounded-3xl border border-white/10 bg-white/5 p-4 text-white/80 shadow-inner shadow-black/10">
                             <div>
-                              <p className="text-[11px] uppercase tracking-[0.3em] text-white/50">
-                                Showing
+                              <p className="text-[11px] uppercase tracking-[0.3em] text-white/60">
+                                Premium brands
                               </p>
-                              <h2 className="mt-2 text-2xl font-semibold text-white">
-                                {selectedCategory}
+                              <h2 className="mt-2 text-xl font-semibold text-white sm:text-2xl">
+                                Wholesale brand collection
                               </h2>
                             </div>
-                            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/80">
-                              {filteredBrands.length} brands
-                            </span>
+                            <p className="max-w-2xl text-sm leading-6 text-white/70">
+                              Explore all brands in one place with compact cards designed for fast browsing and direct access to each lineup.
+                            </p>
                           </div>
 
-                          <div className="grid gap-5 overflow-y-auto pr-1 sm:grid-cols-2 xl:grid-cols-3">
-                            {featuredBrands.map((brand) => (
-                              <div
-                                key={brand.slug}
-                                role="link"
-                                tabIndex={0}
-                                onClick={() => navigate(`/brands/${brand.slug}`)}
-                                onKeyDown={(event) => {
-                                  if (event.key === "Enter" || event.key === " ") {
-                                    navigate(`/brands/${brand.slug}`);
-                                  }
-                                }}
-                                className="group relative flex min-h-[22rem] flex-col overflow-hidden rounded-[24px] border border-white/10 bg-slate-900 shadow-xl shadow-black/20 transition-transform duration-500 hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(0,0,0,0.22)] cursor-pointer"
-                              >
-                                <div className="absolute inset-0 overflow-hidden">
-                                  <img
-                                    src={brand.image}
-                                    alt={brand.imageAlt}
-                                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                                  />
-                                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/50 to-transparent" />
-                                </div>
-                                <div className="relative z-10 flex h-full flex-col justify-between p-6 text-white">
-                                  <div>
-                                    <p className="text-[11px] uppercase tracking-[0.35em] text-white/60">
-                                      {brand.categoryGroup.toUpperCase()}
-                                    </p>
-                                    <h3 className="mt-4 text-2xl font-semibold tracking-tight">
-                                      {brand.name}
-                                    </h3>
-                                    <p className="mt-3 max-w-[70%] text-sm leading-6 text-white/80">
-                                      {brand.tagline}
-                                    </p>
+                          <div className="max-h-[64vh] overflow-y-auto pr-2">
+                            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+                              {featuredBrands.map((brand) => (
+                                <div
+                                  key={brand.slug}
+                                  role="button"
+                                  tabIndex={0}
+                                  onClick={() => navigate(`/brands/${brand.slug}`)}
+                                  onKeyDown={(event) => {
+                                    if (event.key === "Enter" || event.key === " ") {
+                                      navigate(`/brands/${brand.slug}`);
+                                    }
+                                  }}
+                                  className="group flex min-h-[18rem] flex-col overflow-hidden rounded-[22px] border border-white/10 bg-slate-900 shadow-lg shadow-black/20 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.18)] cursor-pointer"
+                                >
+                                  <div className="relative h-32 overflow-hidden bg-slate-800">
+                                    <img
+                                      src={brand.image}
+                                      alt={brand.imageAlt}
+                                      className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent" />
                                   </div>
-
-                                  <div className="mt-6 space-y-3 text-sm text-white/80">
-                                    {brand.products.slice(0, 4).map((product) => (
-                                      <Link
-                                        key={product.id}
-                                        to={`/brands/${brand.slug}`}
-                                        className="block rounded-2xl bg-white/10 px-3 py-2 transition hover:bg-white/15"
-                                        onClick={(event) => event.stopPropagation()}
-                                      >
-                                        <p className="font-medium text-white">{product.name}</p>
-                                        <p className="text-xs text-white/60">{product.tagline}</p>
-                                      </Link>
-                                    ))}
-                                  </div>
-
-                                  <div className="mt-6 flex items-center gap-2 text-sm font-medium text-white transition group-hover:text-white/90">
-                                    <span>Explore</span>
-                                    <span aria-hidden="true">→</span>
+                                  <div className="relative z-10 flex flex-1 flex-col justify-between gap-4 p-4 text-white">
+                                    <div>
+                                      <p className="text-[10px] uppercase tracking-[0.35em] text-white/60">
+                                        {brand.categoryGroup}
+                                      </p>
+                                      <h3 className="mt-3 text-lg font-semibold leading-tight text-white">
+                                        {brand.name}
+                                      </h3>
+                                    </div>
+                                    <div className="space-y-2 text-sm text-white/70">
+                                      {brand.products.slice(0, 2).map((product) => (
+                                        <Link
+                                          key={product.id}
+                                          to={`/brands/${brand.slug}`}
+                                          className="block rounded-2xl bg-white/5 px-3 py-2 transition hover:bg-white/10"
+                                          onClick={(event) => event.stopPropagation()}
+                                        >
+                                          <p className="font-medium text-white">{product.name}</p>
+                                          <p className="truncate text-xs text-white/60">{product.tagline}</p>
+                                        </Link>
+                                      ))}
+                                    </div>
+                                    <div className="flex items-center justify-between text-sm font-medium text-white/80">
+                                      <span>Explore</span>
+                                      <span aria-hidden="true">→</span>
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                            ))}
+                              ))}
+                            </div>
                           </div>
                         </section>
                       </div>
