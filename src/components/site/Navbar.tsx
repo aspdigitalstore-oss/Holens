@@ -104,11 +104,11 @@ export function Navbar() {
 
                   {brandsPanelOpen && (
                     <div
-                      className="absolute left-1/2 top-full z-40 mt-3 max-w-[1300px] -translate-x-1/2 overflow-hidden rounded-[28px] border border-slate-200/10 bg-white/95 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur-xl"
-                      style={{width: "min(95vw, 1300px)", overscrollBehavior: "contain"}}
+                      className="absolute inset-x-[60px] top-full z-40 mt-3 max-w-[1300px] mx-auto overflow-hidden rounded-[28px] border border-slate-200/10 bg-white/95 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur-xl"
+                      style={{ overscrollBehavior: "contain" }}
                     >
                       <div className="grid min-h-[55vh] max-h-[75vh] grid-cols-1 overflow-hidden">
-                        <section className="overflow-hidden bg-slate-950/95 px-[60px] py-5">
+                        <section className="overflow-hidden bg-slate-950/95 px-[60px] pt-6 pb-8">
                           <div
                             className="max-h-[64vh] overflow-y-auto pr-2"
                             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
@@ -125,9 +125,9 @@ export function Navbar() {
                                       navigate(`/brands/${brand.slug}`);
                                     }
                                   }}
-                                  className="group flex min-h-[15rem] flex-col overflow-hidden rounded-[22px] border border-white/10 bg-slate-900 shadow-lg shadow-black/20 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(0,0,0,0.18)] cursor-pointer"
+                                  className="group flex min-h-[14rem] flex-col overflow-hidden rounded-[22px] border border-white/10 bg-slate-900 shadow-lg shadow-black/20 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(0,0,0,0.18)] cursor-pointer"
                                 >
-                                  <div className="relative h-24 overflow-hidden bg-slate-800">
+                                  <div className="relative h-20 overflow-hidden bg-slate-800">
                                     <img
                                       src={brand.image}
                                       alt={brand.imageAlt}
@@ -135,12 +135,12 @@ export function Navbar() {
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent" />
                                   </div>
-                                  <div className="relative z-10 flex flex-col p-4 text-white">
+                                  <div className="relative z-10 flex flex-col justify-between p-3 text-white">
                                     <div>
                                       <p className="text-[10px] uppercase tracking-[0.35em] text-white/60">
                                         {brand.categoryGroup}
                                       </p>
-                                      <h3 className="mt-2 text-lg font-semibold leading-tight text-white">
+                                      <h3 className="mt-1 text-base font-semibold leading-tight text-white">
                                         {brand.name}
                                       </h3>
                                     </div>
