@@ -116,7 +116,7 @@ export function Navbar() {
                             {MEGA_CATEGORIES.map((category) => (
                               <div
                                 key={category}
-                                className="rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/80"
+                                className="rounded-2xl border border-slate-800 bg-slate-900/90 px-4 py-3 text-sm text-white/80"
                               >
                                 {category}
                               </div>
@@ -125,8 +125,11 @@ export function Navbar() {
                         </aside>
 
                         <section className="overflow-hidden bg-slate-950/95 p-4 md:p-5">
-                          <div className="max-h-[64vh] overflow-y-auto pr-2">
-                            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+                          <div
+                            className="max-h-[64vh] overflow-y-auto pr-2"
+                            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                          >
+                            <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                               {featuredBrands.map((brand) => (
                                 <div
                                   key={brand.slug}
@@ -148,20 +151,20 @@ export function Navbar() {
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent" />
                                   </div>
-                                  <div className="relative z-10 flex h-full flex-col justify-between p-4 text-white">
-                                  <div>
-                                    <p className="text-[10px] uppercase tracking-[0.35em] text-white/60">
-                                      {brand.categoryGroup}
-                                    </p>
-                                    <h3 className="mt-3 text-lg font-semibold leading-tight text-white">
-                                      {brand.name}
-                                    </h3>
+                                  <div className="relative z-10 flex flex-col p-4 text-white">
+                                    <div>
+                                      <p className="text-[10px] uppercase tracking-[0.35em] text-white/60">
+                                        {brand.categoryGroup}
+                                      </p>
+                                      <h3 className="mt-2 text-lg font-semibold leading-tight text-white">
+                                        {brand.name}
+                                      </h3>
+                                    </div>
+                                    <div className="mt-3 flex items-center justify-between text-sm font-medium text-white/90">
+                                      <span>Explore</span>
+                                      <span aria-hidden="true">→</span>
+                                    </div>
                                   </div>
-                                  <div className="flex items-center justify-between text-sm font-medium text-white/90">
-                                    <span>Explore</span>
-                                    <span aria-hidden="true">→</span>
-                                  </div>
-                                </div>
                                 </div>
                               ))}
                             </div>
