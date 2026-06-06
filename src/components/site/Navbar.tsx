@@ -125,20 +125,6 @@ export function Navbar() {
                         </aside>
 
                         <section className="overflow-hidden bg-slate-950/95 p-4 md:p-5">
-                          <div className="mb-5 flex flex-col gap-3 rounded-3xl border border-white/10 bg-white/5 p-4 text-white/80 shadow-inner shadow-black/10">
-                            <div>
-                              <p className="text-[11px] uppercase tracking-[0.3em] text-white/60">
-                                Premium brands
-                              </p>
-                              <h2 className="mt-2 text-xl font-semibold text-white sm:text-2xl">
-                                Wholesale brand collection
-                              </h2>
-                            </div>
-                            <p className="max-w-2xl text-sm leading-6 text-white/70">
-                              Explore all brands in one place with compact cards designed for fast browsing and direct access to each lineup.
-                            </p>
-                          </div>
-
                           <div className="max-h-[64vh] overflow-y-auto pr-2">
                             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                               {featuredBrands.map((brand) => (
@@ -152,9 +138,9 @@ export function Navbar() {
                                       navigate(`/brands/${brand.slug}`);
                                     }
                                   }}
-                                  className="group flex min-h-[18rem] flex-col overflow-hidden rounded-[22px] border border-white/10 bg-slate-900 shadow-lg shadow-black/20 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.18)] cursor-pointer"
+                                  className="group flex min-h-[16rem] flex-col overflow-hidden rounded-[22px] border border-white/10 bg-slate-900 shadow-lg shadow-black/20 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.18)] cursor-pointer"
                                 >
-                                  <div className="relative h-32 overflow-hidden bg-slate-800">
+                                  <div className="relative h-28 overflow-hidden bg-slate-800">
                                     <img
                                       src={brand.image}
                                       alt={brand.imageAlt}
@@ -162,33 +148,20 @@ export function Navbar() {
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent" />
                                   </div>
-                                  <div className="relative z-10 flex flex-1 flex-col justify-between gap-4 p-4 text-white">
-                                    <div>
-                                      <p className="text-[10px] uppercase tracking-[0.35em] text-white/60">
-                                        {brand.categoryGroup}
-                                      </p>
-                                      <h3 className="mt-3 text-lg font-semibold leading-tight text-white">
-                                        {brand.name}
-                                      </h3>
-                                    </div>
-                                    <div className="space-y-2 text-sm text-white/70">
-                                      {brand.products.slice(0, 2).map((product) => (
-                                        <Link
-                                          key={product.id}
-                                          to={`/brands/${brand.slug}`}
-                                          className="block rounded-2xl bg-white/5 px-3 py-2 transition hover:bg-white/10"
-                                          onClick={(event) => event.stopPropagation()}
-                                        >
-                                          <p className="font-medium text-white">{product.name}</p>
-                                          <p className="truncate text-xs text-white/60">{product.tagline}</p>
-                                        </Link>
-                                      ))}
-                                    </div>
-                                    <div className="flex items-center justify-between text-sm font-medium text-white/80">
-                                      <span>Explore</span>
-                                      <span aria-hidden="true">→</span>
-                                    </div>
+                                  <div className="relative z-10 flex h-full flex-col justify-between p-4 text-white">
+                                  <div>
+                                    <p className="text-[10px] uppercase tracking-[0.35em] text-white/60">
+                                      {brand.categoryGroup}
+                                    </p>
+                                    <h3 className="mt-3 text-lg font-semibold leading-tight text-white">
+                                      {brand.name}
+                                    </h3>
                                   </div>
+                                  <div className="flex items-center justify-between text-sm font-medium text-white/90">
+                                    <span>Explore</span>
+                                    <span aria-hidden="true">→</span>
+                                  </div>
+                                </div>
                                 </div>
                               ))}
                             </div>
