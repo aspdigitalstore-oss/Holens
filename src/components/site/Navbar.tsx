@@ -104,11 +104,11 @@ export function Navbar() {
 
                   {brandsPanelOpen && (
                     <div
-                      className="absolute left-1/2 top-full z-40 mt-3 w-[90vw] max-w-[1600px] -translate-x-1/2 overflow-hidden rounded-[28px] border border-slate-200/10 bg-white/95 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur-xl"
+                      className="absolute left-1/2 top-full z-40 mt-3 w-[95vw] max-w-[1600px] -translate-x-1/2 overflow-hidden rounded-[28px] border border-slate-200/10 bg-white/95 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur-xl"
                       style={{ overscrollBehavior: "contain" }}
                     >
-                      <div className="grid min-h-[55vh] max-h-[75vh] grid-cols-1 overflow-hidden lg:grid-cols-[260px_1fr]">
-                        <aside className="sticky top-0 hidden h-full overflow-y-auto border-r border-slate-200/10 bg-slate-950/95 p-6 text-white lg:block">
+                      <div className="grid min-h-[55vh] max-h-[75vh] grid-cols-1 overflow-hidden lg:grid-cols-[220px_minmax(0,1fr)]">
+                        <aside className="sticky top-0 hidden h-full overflow-y-auto border-r border-slate-200/10 bg-slate-950/95 p-6 text-white lg:block rounded-l-[28px]">
                           <p className="text-[11px] uppercase tracking-[0.3em] text-white/50">
                             Product categories
                           </p>
@@ -124,7 +124,7 @@ export function Navbar() {
                           </div>
                         </aside>
 
-                        <section className="overflow-hidden bg-slate-950/95 p-4 md:p-5">
+                        <section className="overflow-hidden bg-slate-950/95 p-4 md:p-5 rounded-tr-[28px] rounded-br-[28px]">
                           <div
                             className="max-h-[64vh] overflow-y-auto pr-2"
                             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
