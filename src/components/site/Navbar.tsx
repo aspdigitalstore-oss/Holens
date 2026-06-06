@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowUpRight, Menu, ShoppingBag, X, LogIn, UserPlus } from "lucide-react";
 import { CATEGORY_CONTENT } from "@/lib/content";
+import { BRANDS } from "@/lib/brands";
 import { COMPANY, NO_RETAIL_NOTICE, WHOLESALE_ONLY_LABEL } from "@/lib/company";
 import { useInquiry } from "@/lib/inquiry";
 import AccountModal from "@/components/site/AccountModal";
@@ -18,9 +19,13 @@ const NAV = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [brandsPanelOpen, setBrandsPanelOpen] = useState(false);
   const [accountModalOpen, setAccountModalOpen] = useState(false);
   const [initialMode, setInitialMode] = useState<"create" | "login">("create");
   const { items } = useInquiry();
+
+  const featuredBrands = BRANDS.slice(0, 3);
+  const featuredCategories = CATEGORY_CONTENT.slice(0, 3);
 
   function openCreate() {
     setInitialMode("create");
@@ -68,21 +73,108 @@ export function Navbar() {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary navigation">
-            {NAV.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                className={({ isActive }) =>
-                  `rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                    isActive ? "text-ink" : "text-ink/70 hover:text-ink"
-                  }`
-                }
-              >
-                {item.label}
-              </NavLink>
-            ))}
-          </nav>
+          <div className="hidden items-center gap-1 lg:flex relative" aria-label="Primary navigation">
+            {NAV.map((item) =>
+              item.label === "Brands" ? (
+                <div
+                  key={item.to}
+                  className="relative"
+                  onMouseEnter={() => setBrandsPanelOpen(true)}
+                  onMouseLeave={() => setBrandsPanelOpen(false)}
+                >
+                  <NavLink
+                    to={item.to}
+                    className={({ isActive }) =>
+                      `rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                        isActive ? "text-ink" : "text-ink/70 hover:text-ink"
+                      }`
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
+
+                  {brandsPanelOpen && (
+                    <div className="absolute left-0 top-full z-40 mt-3 w-screen min-w-[24rem] max-w-[84rem] rounded-3xl border border-black/5 bg-white/95 p-6 shadow-2xl backdrop-blur-xl">
+                      <div className="mx-auto grid max-w-[1400px] gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:gap-8">
+                        <div className="space-y-4 rounded-3xl bg-slate-50 p-5">
+                          <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                            Explore by category
+                          </p>
+                          {featuredCategories.map((category) => (
+                            <Link
+                              key={category.slug}
+                              to={`/categories/${category.slug}`}
+                              className="block rounded-3xl border border-black/5 bg-white p-5 transition hover:border-ink/20 hover:bg-white"
+                            >
+                              <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                                {category.eyebrow}
+                              </p>
+                              <h3 className="mt-3 text-lg font-semibold text-ink">
+                                {category.name}
+                              </h3>
+                              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                                {category.description}
+                              </p>
+                            </Link>
+                          ))}
+                        </div>
+
+                        <div className="grid gap-4 sm:grid-cols-2">
+                          {featuredBrands.map((brand) => (
+                            <Link
+                              key={brand.slug}
+                              to={`/brands/${brand.slug}`}
+                              className="group overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+                            >
+                              <div className="h-40 overflow-hidden bg-slate-100">
+                                <img
+                                  src={brand.image}
+                                  alt={brand.imageAlt}
+                                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                />
+                              </div>
+                              <div className="p-5">
+                                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                                  {brand.categoryGroup}
+                                </p>
+                                <h3 className="mt-2 text-xl font-semibold text-ink">
+                                  {brand.name}
+                                </h3>
+                                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                                  {brand.tagline}
+                                </p>
+                                <div className="mt-4 space-y-2 text-sm text-muted-foreground">
+                                  <p className="font-medium text-ink">Featured products</p>
+                                  {brand.products.slice(0, 2).map((product) => (
+                                    <div key={product.id}>
+                                      <p className="font-semibold text-ink">{product.name}</p>
+                                      <p>{product.tagline}</p>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  className={({ isActive }) =>
+                    `rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                      isActive ? "text-ink" : "text-ink/70 hover:text-ink"
+                    }`
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              )
+            )}
+          </div>
 
           <div className="hidden items-center gap-2 lg:flex">
             <button onClick={openCreate} className="inline-flex items-center gap-2 rounded-full border border-ink px-3 py-2 text-sm font-medium text-ink hover:bg-ink/5" title="Create account">
