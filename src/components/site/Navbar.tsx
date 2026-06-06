@@ -128,7 +128,7 @@ export function Navbar() {
                                         navigate(`/brands/${brand.slug}`);
                                       }
                                     }}
-                                    className={`group flex min-h-[14rem] flex-col overflow-hidden rounded-[22px] border shadow-lg shadow-black/10 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(0,0,0,0.12)] cursor-pointer ${cardBackground}`}
+                                    className={`group flex min-h-[10rem] flex-col overflow-hidden rounded-[22px] border shadow-lg shadow-black/10 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(0,0,0,0.12)] cursor-pointer ${cardBackground}`}
                                   >
                                     <div className={`relative h-20 overflow-hidden ${imageBackground}`}>
                                       <img
