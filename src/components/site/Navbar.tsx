@@ -104,32 +104,16 @@ export function Navbar() {
 
                   {brandsPanelOpen && (
                     <div
-                      className="absolute left-1/2 top-full z-40 mt-3 w-[95vw] max-w-[1600px] -translate-x-1/2 overflow-hidden rounded-[28px] border border-slate-200/10 bg-white/95 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur-xl"
-                      style={{ overscrollBehavior: "contain" }}
+                      className="absolute left-1/2 top-full z-40 mt-3 max-w-[1600px] -translate-x-1/2 overflow-hidden rounded-[28px] border border-slate-200/10 bg-white/95 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur-xl"
+                      style={{ width: "calc(100vw - 120px)", overscrollBehavior: "contain" }}
                     >
-                      <div className="grid min-h-[55vh] max-h-[75vh] grid-cols-1 overflow-hidden lg:grid-cols-[220px_minmax(0,1fr)]">
-                        <aside className="sticky top-0 hidden h-full overflow-y-auto border-r border-slate-200/10 bg-slate-950/95 p-6 text-white lg:block rounded-l-[28px]">
-                          <p className="text-[11px] uppercase tracking-[0.3em] text-white/50">
-                            Product categories
-                          </p>
-                          <div className="mt-6 space-y-3">
-                            {MEGA_CATEGORIES.map((category) => (
-                              <div
-                                key={category}
-                                className="rounded-2xl border border-slate-800 bg-slate-900/90 px-4 py-3 text-sm text-white/80"
-                              >
-                                {category}
-                              </div>
-                            ))}
-                          </div>
-                        </aside>
-
-                        <section className="overflow-hidden bg-slate-950/95 px-6 py-5 rounded-tr-[28px] rounded-br-[28px]">
+                      <div className="grid min-h-[55vh] max-h-[75vh] grid-cols-1 overflow-hidden">
+                        <section className="overflow-hidden bg-slate-950/95 px-[60px] py-5">
                           <div
                             className="max-h-[64vh] overflow-y-auto pr-2"
                             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                           >
-                            <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+                            <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
                               {featuredBrands.map((brand) => (
                                 <div
                                   key={brand.slug}
@@ -141,9 +125,9 @@ export function Navbar() {
                                       navigate(`/brands/${brand.slug}`);
                                     }
                                   }}
-                                  className="group flex min-h-[17rem] flex-col overflow-hidden rounded-[22px] border border-white/10 bg-slate-900 shadow-lg shadow-black/20 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.18)] cursor-pointer"
+                                  className="group flex min-h-[15rem] flex-col overflow-hidden rounded-[22px] border border-white/10 bg-slate-900 shadow-lg shadow-black/20 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(0,0,0,0.18)] cursor-pointer"
                                 >
-                                  <div className="relative h-32 overflow-hidden bg-slate-800">
+                                  <div className="relative h-24 overflow-hidden bg-slate-800">
                                     <img
                                       src={brand.image}
                                       alt={brand.imageAlt}
