@@ -113,42 +113,47 @@ export function Navbar() {
                             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                           >
                             <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
-                              {featuredBrands.map((brand) => (
-                                <div
-                                  key={brand.slug}
-                                  role="button"
-                                  tabIndex={0}
-                                  onClick={() => navigate(`/brands/${brand.slug}`)}
-                                  onKeyDown={(event) => {
-                                    if (event.key === "Enter" || event.key === " ") {
-                                      navigate(`/brands/${brand.slug}`);
-                                    }
-                                  }}
-                                  className="group flex min-h-[14rem] flex-col overflow-hidden rounded-[22px] border border-slate-200 bg-white shadow-lg shadow-black/10 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(0,0,0,0.12)] cursor-pointer"
-                                >
-                                  <div className="relative h-20 overflow-hidden bg-slate-100">
-                                    <img
-                                      src={brand.image}
-                                      alt={brand.imageAlt}
-                                      className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                                    />
-                                  </div>
-                                  <div className="relative z-10 flex flex-col justify-between p-3 text-slate-950">
-                                    <div>
-                                      <p className="text-[10px] uppercase tracking-[0.35em] text-slate-500">
-                                        {brand.categoryGroup}
-                                      </p>
-                                      <h3 className="mt-1 text-base font-semibold leading-tight text-slate-950">
-                                        {brand.name}
-                                      </h3>
+                              {featuredBrands.map((brand, index) => {
+                                const cardBackground = index === 0 ? "bg-white border-slate-200" : "bg-slate-50 border-slate-200/70";
+                                const imageBackground = index === 0 ? "bg-slate-100" : "bg-white";
+
+                                return (
+                                  <div
+                                    key={brand.slug}
+                                    role="button"
+                                    tabIndex={0}
+                                    onClick={() => navigate(`/brands/${brand.slug}`)}
+                                    onKeyDown={(event) => {
+                                      if (event.key === "Enter" || event.key === " ") {
+                                        navigate(`/brands/${brand.slug}`);
+                                      }
+                                    }}
+                                    className={`group flex min-h-[14rem] flex-col overflow-hidden rounded-[22px] border shadow-lg shadow-black/10 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(0,0,0,0.12)] cursor-pointer ${cardBackground}`}
+                                  >
+                                    <div className={`relative h-20 overflow-hidden ${imageBackground}`}>
+                                      <img
+                                        src={brand.image}
+                                        alt={brand.imageAlt}
+                                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                      />
                                     </div>
-                                    <div className="flex items-center justify-between text-sm font-medium text-slate-700">
-                                      <span>Explore</span>
-                                      <span aria-hidden="true">→</span>
+                                    <div className="relative z-10 flex flex-col justify-between p-3 text-slate-950">
+                                      <div>
+                                        <p className="text-[10px] uppercase tracking-[0.35em] text-slate-500">
+                                          {brand.categoryGroup}
+                                        </p>
+                                        <h3 className="mt-1 text-base font-semibold leading-tight text-slate-950">
+                                          {brand.name}
+                                        </h3>
+                                      </div>
+                                      <div className="flex items-center justify-between text-sm font-medium text-slate-700">
+                                        <span>Explore</span>
+                                        <span aria-hidden="true">→</span>
+                                      </div>
                                     </div>
                                   </div>
-                                </div>
-                              ))}
+                                );
+                              })}
                             </div>
                           </div>
                         </section>
