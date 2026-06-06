@@ -129,7 +129,7 @@ export function Navbar() {
                             className="max-h-[64vh] overflow-y-auto pr-2"
                             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                           >
-                            <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                            <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8">
                               {featuredBrands.map((brand) => (
                                 <div
                                   key={brand.slug}
@@ -160,7 +160,7 @@ export function Navbar() {
                                         {brand.name}
                                       </h3>
                                     </div>
-                                    <div className="mt-3 flex items-center justify-between text-sm font-medium text-white/90">
+                                    <div className="mt-2 flex items-center justify-between text-sm font-medium text-white/90">
                                       <span>Explore</span>
                                       <span aria-hidden="true">→</span>
                                     </div>
