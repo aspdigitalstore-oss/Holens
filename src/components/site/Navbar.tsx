@@ -107,7 +107,7 @@ export function Navbar() {
                       style={{ overscrollBehavior: "contain" }}
                     >
                       <div className="grid min-h-[55vh] max-h-[75vh] grid-cols-1 overflow-hidden">
-                        <section className="overflow-hidden bg-slate-950/95 px-[60px] pt-6 pb-8">
+                        <section className="overflow-hidden bg-white px-[60px] pt-6 pb-8">
                           <div
                             className="max-h-[64vh] overflow-y-auto pr-2"
                             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
