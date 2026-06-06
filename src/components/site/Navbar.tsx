@@ -94,69 +94,74 @@ export function Navbar() {
                   </NavLink>
 
                   {brandsPanelOpen && (
-                    <div className="absolute left-1/2 top-full z-40 mt-3 w-[72rem] max-w-[calc(100vw-2rem)] -translate-x-1/2 rounded-3xl border border-black/5 bg-white/95 p-6 shadow-2xl backdrop-blur-xl">
-                      <div className="grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
-                        <div className="space-y-4 rounded-3xl bg-slate-50 p-5">
-                          <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                            Explore by category
-                          </p>
-                          <div className="grid gap-4">
-                            {featuredCategories.map((category) => (
+                    <div
+                      className="absolute left-1/2 top-full z-40 mt-3 w-full max-w-[68rem] -translate-x-1/2 overflow-hidden rounded-3xl border border-black/5 bg-white/95 shadow-2xl backdrop-blur-xl"
+                      style={{ overscrollBehavior: "contain" }}
+                    >
+                      <div className="max-h-[62vh] overflow-hidden">
+                        <div className="relative flex h-full overflow-hidden rounded-3xl border border-black/5 bg-white">
+                          <div className="min-w-[20rem] flex-1 border-r border-black/5 bg-slate-50 p-5">
+                            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                              Explore by category
+                            </p>
+                            <div className="mt-4 space-y-3 overflow-y-auto pr-1 pb-1">
+                              {featuredCategories.map((category) => (
+                                <Link
+                                  key={category.slug}
+                                  to={`/categories/${category.slug}`}
+                                  className="block rounded-3xl border border-black/5 bg-white p-4 transition hover:border-ink/20 hover:bg-white"
+                                >
+                                  <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                                    {category.eyebrow}
+                                  </p>
+                                  <h3 className="mt-3 text-base font-semibold text-ink">
+                                    {category.name}
+                                  </h3>
+                                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                                    {category.description}
+                                  </p>
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className="grid flex-1 gap-4 p-5 sm:grid-cols-2 overflow-y-auto">
+                            {featuredBrands.map((brand) => (
                               <Link
-                                key={category.slug}
-                                to={`/categories/${category.slug}`}
-                                className="block rounded-3xl border border-black/5 bg-white p-5 transition hover:border-ink/20 hover:bg-white"
+                                key={brand.slug}
+                                to={`/brands/${brand.slug}`}
+                                className="group overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
                               >
-                                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                                  {category.eyebrow}
-                                </p>
-                                <h3 className="mt-3 text-lg font-semibold text-ink">
-                                  {category.name}
-                                </h3>
-                                <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                                  {category.description}
-                                </p>
+                                <div className="h-32 overflow-hidden bg-slate-100">
+                                  <img
+                                    src={brand.image}
+                                    alt={brand.imageAlt}
+                                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                  />
+                                </div>
+                                <div className="p-4">
+                                  <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                                    {brand.categoryGroup}
+                                  </p>
+                                  <h3 className="mt-2 text-base font-semibold text-ink">
+                                    {brand.name}
+                                  </h3>
+                                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                                    {brand.tagline}
+                                  </p>
+                                  <div className="mt-4 space-y-2 text-sm text-muted-foreground">
+                                    <p className="font-medium text-ink">Featured products</p>
+                                    {brand.products.slice(0, 2).map((product) => (
+                                      <div key={product.id}>
+                                        <p className="font-semibold text-ink">{product.name}</p>
+                                        <p className="text-sm text-muted-foreground">{product.tagline}</p>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
                               </Link>
                             ))}
                           </div>
-                        </div>
-
-                        <div className="grid gap-4 sm:grid-cols-2">
-                          {featuredBrands.map((brand) => (
-                            <Link
-                              key={brand.slug}
-                              to={`/brands/${brand.slug}`}
-                              className="group overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
-                            >
-                              <div className="h-36 overflow-hidden bg-slate-100">
-                                <img
-                                  src={brand.image}
-                                  alt={brand.imageAlt}
-                                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                                />
-                              </div>
-                              <div className="p-5">
-                                <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                                  {brand.categoryGroup}
-                                </p>
-                                <h3 className="mt-2 text-lg font-semibold text-ink">
-                                  {brand.name}
-                                </h3>
-                                <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                                  {brand.tagline}
-                                </p>
-                                <div className="mt-4 space-y-2 text-sm text-muted-foreground">
-                                  <p className="font-medium text-ink">Featured products</p>
-                                  {brand.products.slice(0, 2).map((product) => (
-                                    <div key={product.id}>
-                                      <p className="font-semibold text-ink">{product.name}</p>
-                                      <p className="text-sm text-muted-foreground">{product.tagline}</p>
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
-                            </Link>
-                          ))}
                         </div>
                       </div>
                     </div>
