@@ -94,29 +94,31 @@ export function Navbar() {
                   </NavLink>
 
                   {brandsPanelOpen && (
-                    <div className="absolute left-0 top-full z-40 mt-3 w-screen min-w-[24rem] max-w-[84rem] rounded-3xl border border-black/5 bg-white/95 p-6 shadow-2xl backdrop-blur-xl">
-                      <div className="mx-auto grid max-w-[1400px] gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:gap-8">
+                    <div className="absolute left-1/2 top-full z-40 mt-3 w-[72rem] max-w-[calc(100vw-2rem)] -translate-x-1/2 rounded-3xl border border-black/5 bg-white/95 p-6 shadow-2xl backdrop-blur-xl">
+                      <div className="grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
                         <div className="space-y-4 rounded-3xl bg-slate-50 p-5">
                           <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                             Explore by category
                           </p>
-                          {featuredCategories.map((category) => (
-                            <Link
-                              key={category.slug}
-                              to={`/categories/${category.slug}`}
-                              className="block rounded-3xl border border-black/5 bg-white p-5 transition hover:border-ink/20 hover:bg-white"
-                            >
-                              <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                                {category.eyebrow}
-                              </p>
-                              <h3 className="mt-3 text-lg font-semibold text-ink">
-                                {category.name}
-                              </h3>
-                              <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                                {category.description}
-                              </p>
-                            </Link>
-                          ))}
+                          <div className="grid gap-4">
+                            {featuredCategories.map((category) => (
+                              <Link
+                                key={category.slug}
+                                to={`/categories/${category.slug}`}
+                                className="block rounded-3xl border border-black/5 bg-white p-5 transition hover:border-ink/20 hover:bg-white"
+                              >
+                                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                                  {category.eyebrow}
+                                </p>
+                                <h3 className="mt-3 text-lg font-semibold text-ink">
+                                  {category.name}
+                                </h3>
+                                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                                  {category.description}
+                                </p>
+                              </Link>
+                            ))}
+                          </div>
                         </div>
 
                         <div className="grid gap-4 sm:grid-cols-2">
@@ -126,7 +128,7 @@ export function Navbar() {
                               to={`/brands/${brand.slug}`}
                               className="group overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
                             >
-                              <div className="h-40 overflow-hidden bg-slate-100">
+                              <div className="h-36 overflow-hidden bg-slate-100">
                                 <img
                                   src={brand.image}
                                   alt={brand.imageAlt}
@@ -134,10 +136,10 @@ export function Navbar() {
                                 />
                               </div>
                               <div className="p-5">
-                                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                                <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
                                   {brand.categoryGroup}
                                 </p>
-                                <h3 className="mt-2 text-xl font-semibold text-ink">
+                                <h3 className="mt-2 text-lg font-semibold text-ink">
                                   {brand.name}
                                 </h3>
                                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
@@ -148,7 +150,7 @@ export function Navbar() {
                                   {brand.products.slice(0, 2).map((product) => (
                                     <div key={product.id}>
                                       <p className="font-semibold text-ink">{product.name}</p>
-                                      <p>{product.tagline}</p>
+                                      <p className="text-sm text-muted-foreground">{product.tagline}</p>
                                     </div>
                                   ))}
                                 </div>
