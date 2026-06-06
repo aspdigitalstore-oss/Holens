@@ -69,7 +69,7 @@ export function Navbar() {
       </div>
 
       <div
-        className={`transition-all duration-300 ${scrolled ? "border-b border-black/5 bg-white/95 shadow-sm backdrop-blur-xl" : "bg-white/90 backdrop-blur-xl"}`}
+        className={`relative transition-all duration-300 ${scrolled ? "border-b border-black/5 bg-white/95 shadow-sm backdrop-blur-xl" : "bg-white/90 backdrop-blur-xl"}`}
       >
         <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6 lg:px-10">
           <Link to="/" className="group flex items-center gap-2" aria-label="Vitala Global Holdings home">
@@ -82,12 +82,11 @@ export function Navbar() {
             </span>
           </Link>
 
-          <div className="hidden items-center gap-1 lg:flex relative" aria-label="Primary navigation">
+          <div className="hidden items-center gap-1 lg:flex" aria-label="Primary navigation">
             {NAV.map((item) =>
               item.label === "Brands" ? (
                 <div
                   key={item.to}
-                  className="relative"
                   onMouseEnter={() => setBrandsPanelOpen(true)}
                   onMouseLeave={() => setBrandsPanelOpen(false)}
                 >
@@ -104,7 +103,7 @@ export function Navbar() {
 
                   {brandsPanelOpen && (
                     <div
-                      className="absolute inset-x-[60px] top-full z-40 mt-3 max-w-[1300px] mx-auto overflow-hidden rounded-[28px] border border-slate-200/10 bg-white/95 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur-xl"
+                      className="absolute left-1/2 top-full z-40 mt-3 w-[min(95vw,1300px)] max-w-[1300px] -translate-x-1/2 overflow-hidden rounded-[28px] border border-slate-200/10 bg-white/95 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur-xl"
                       style={{ overscrollBehavior: "contain" }}
                     >
                       <div className="grid min-h-[55vh] max-h-[75vh] grid-cols-1 overflow-hidden">
