@@ -104,8 +104,8 @@ export function Navbar() {
 
                   {brandsPanelOpen && (
                     <div
-                      className="absolute left-1/2 top-full z-40 mt-3 max-w-[1600px] -translate-x-1/2 overflow-hidden rounded-[28px] border border-slate-200/10 bg-white/95 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur-xl"
-                      style={{ width: "calc(100vw - 120px)", overscrollBehavior: "contain" }}
+                      className="absolute left-1/2 top-full z-40 mt-3 max-w-[1700px] -translate-x-1/2 overflow-hidden rounded-[28px] border border-slate-200/10 bg-white/95 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur-xl"
+                      style={{width: "min(95vw, 1700px)", overscrollBehavior: "contain"}}
                     >
                       <div className="grid min-h-[55vh] max-h-[75vh] grid-cols-1 overflow-hidden">
                         <section className="overflow-hidden bg-slate-950/95 px-[60px] py-5">
